@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JN CRM - Academia de Tutoriales</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #080c14;
+      --card-dark: #0f172a;
+      --card-hover: #1e293b;
+      --gold: #d4af37;
+      --gold-light: #f6e05e;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-color: #1e293b;
+      --border-gold: rgba(212, 175, 55, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 16px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand-container {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand-logo {
+      height: 42px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .brand-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-title span {
+      color: var(--gold);
+      font-weight: 800;
+    }
+
+    .badge-pro {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.05));
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .layout-container {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      flex: 1;
+      min-height: calc(100vh - 75px);
+    }
+
+    /* BARRA LATERAL (SECCIONES) */
+    .sidebar {
+      background-color: var(--card-dark);
+      border-right: 1px solid var(--border-color);
+      padding: 24px 16px;
+      overflow-y: auto;
+      max-height: calc(100vh - 75px);
+    }
+
+    .sidebar-heading {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      margin-bottom: 16px;
+      padding-left: 12px;
+    }
+
+    .nav-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .nav-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .nav-btn:hover {
+      background-color: var(--card-hover);
+      color: var(--text-main);
+    }
+
+    .nav-btn.active {
+      background: linear-gradient(90deg, rgba(212, 175, 55, 0.15), rgba(15, 23, 42, 0.4));
+      border-color: var(--border-gold);
+      color: var(--gold);
+    }
+
+    .nav-count {
+      font-size: 0.75rem;
+      background-color: rgba(255, 255, 255, 0.06);
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+
+    /* REPRODUCTOR Y CONTENIDO */
+    .content-area {
+      padding: 32px 40px;
+      overflow-y: auto;
+      max-height: calc(100vh - 75px);
+    }
+
+    .module-header {
+      margin-bottom: 24px;
+    }
+
+    .module-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+
+    .module-title span {
+      color: var(--gold);
+    }
+
+    .module-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .player-wrapper {
+      position: relative;
+      width: 100%;
+      background: #000;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border-gold);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      aspect-ratio: 16 / 9;
+      margin-bottom: 28px;
+    }
+
+    .player-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* LISTA DE VIDEOS */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .video-card {
+      background-color: var(--card-dark);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 18px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .video-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .video-card.active {
+      border-color: var(--gold);
+      background: linear-gradient(180deg, rgba(212, 175, 55, 0.08), rgba(15, 23, 42, 0.9));
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .play-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.15);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.3;
+    }
+
+    .card-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      margin-top: 6px;
+    }
+
+    @media (max-width: 1024px) {
+      .layout-container {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        max-height: none;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+      }
+      .content-area {
+        max-height: none;
+        padding: 24px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand-container">
+      <img src="assets/logo.webp" alt="JN CRM Logo" class="brand-logo" onerror="this.style.display='none'">
+      <div class="brand-title">JN <span>CRM</span></div>
+    </div>
+    <div class="badge-pro">Centro de Aprendizaje</div>
+  </header>
+
+  <div class="layout-container">
+    <nav class="sidebar">
+      <div class="sidebar-heading">Módulos del Sistema</div>
+      <ul class="nav-list" id="nav-list"></ul>
+    </nav>
+
+    <main class="content-area">
+      <div class="module-header">
+        <h1 class="module-title" id="module-title">Tutoriales</h1>
+        <p class="module-desc" id="module-desc">Selecciona un video para reproducir la lección detallada.</p>
+      </div>
+
+      <div class="player-wrapper">
+        <iframe id="video-frame" src="" allow="autoplay; fullscreen"></iframe>
+      </div>
+
+      <h2 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 14px; color: var(--gold);">Lecciones de este módulo:</h2>
+      <div class="video-grid" id="video-grid"></div>
+    </main>
+  </div>
+
+  <script>
+    const tutorialesData = [
+      {
+        idModulo: "quick-reply",
+        nombreModulo: "Quick Reply Tutorial",
+        descripcion: "Optimiza la atención de tus clientes con respuestas rápidas y atajos inmediatos.",
+        videos: [
+          {
+            titulo: "Navegación e Interfaz: Abrir y Ocultar Respuestas Rápidas",
+            descripcion: "Despliega el panel de respuestas rápidas y mantén tu entorno de trabajo organizado.",
+            idDrive: "1yW_afikl-tQH-NgBAfGDKzeBUE5uxjti"
+          },
+          {
+            titulo: "Creación y Configuración de Respuestas desde Cero",
+            descripcion: "Aprende el paso a paso para redactar y guardar respuestas listas para usar.",
+            idDrive: "1Qv3toxO3JPoP3L2Ubt256gZWuPOj_hTG"
+          },
+          {
+            titulo: "Mensaje de Bienvenida para Nuevos Prospectos",
+            descripcion: "Estructura un saludo inicial persuasivo y profesional.",
+            idDrive: "1KoMX6He1a27BCf7LxmYgZ7O_GZJPXv5c"
+          },
+          {
+            titulo: "Preguntas Frecuentes (FAQ) y Testimonios",
+            descripcion: "Acelera tus cierres resolviendo dudas frecuentes en un solo clic.",
+            idDrive: "1kTcmtOSzSeMQIWUysnBLbmdpekKlzFrp"
+          },
+          {
+            titulo: "Organización por Carpetas y Categorías",
+            descripcion: "Clasifica tus respuestas por ventas, cobros o soporte técnico.",
+            idDrive: "1GFaBqBTMD0VSIeuQr80rqkZML9gf6DY8"
+          },
+          {
+            titulo: "Filtros y Búsqueda Inmediata en Chats",
+            descripcion: "Localiza y dispara respuestas al instante en cualquier conversación activa.",
+            idDrive: "1SdbM9kDYprWtaMP0Y1vrGTJYGqXLY41X"
+          }
+        ]
+      },
+      {
+        idModulo: "status",
+        nombreModulo: "Status Tutorial",
+        descripcion: "Automatiza la programación y publicación de historias en WhatsApp.",
+        videos: [
+          {
+            titulo: "Programación y Publicación de Estados en WhatsApp",
+            descripcion: "Agenda historias de ofertas y contenidos para mantener impacto continuo de marca.",
+            idDrive: "1Fnrebh2raamRxVv1w46_B_3BkbTMN9p1"
+          }
+        ]
+      },
+      {
+        idModulo: "follow-up",
+        nombreModulo: "Follow-up Tutorial",
+        descripcion: "Estructura recordatorios comerciales para no perder prospectos clave.",
+        videos: [
+          {
+            titulo: "Creación y Gestión de Seguimientos de Venta",
+            descripcion: "Programa alertas de contacto y haz seguimiento efectivo en las etapas de negociación.",
+            idDrive: "1lpDeXrrUGE_jur7JdLLWXQaX-szyj1gY"
+          }
+        ]
+      },
+      {
+        idModulo: "scheduled-messages",
+        nombreModulo: "Scheduled Messages Tutorial",
+        descripcion: "Automatiza difusiones y mensajes con disparos en fechas u horas programadas.",
+        videos: [
+          {
+            titulo: "Lanzamiento y Programación de Difusiones",
+            descripcion: "Aprende a preparar y calendarizar envíos a tus contactos segmentados.",
+            idDrive: "1O8Cy42fMJ2HD2472-g6oy4vTKyaRplp5"
+          },
+          {
+            titulo: "Personalización con Variables Dinámicas",
+            descripcion: "Integra nombres y datos dinámicos en tus mensajes programados masivos.",
+            idDrive: "18EuN8BExibaHzYjHqnYfa-lcdvXSpNYU"
+          }
+        ]
+      },
+      {
+        idModulo: "flow",
+        nombreModulo: "Flow Tutorial",
+        descripcion: "Diseña secuencias lógicas e interacciones automatizadas de alto impacto.",
+        videos: [
+          {
+            titulo: "Diseño y Construcción de Flujos Automatizados",
+            descripcion: "Crea rutas guiadas paso a paso para dirigir prospectos según sus decisiones.",
+            idDrive: "1jTK3Mr-2oGb4LIKoq7rJRxntB73lfoer"
+          }
+        ]
+      },
+      {
+        idModulo: "auto-service",
+        nombreModulo: "Auto Service Tutorial",
+        descripcion: "Configura chatbots y respuestas inteligentes las 24 horas del día.",
+        videos: [
+          {
+            titulo: "Chatbot para Campañas de Redes Sociales",
+            descripcion: "Recibe y atiende de forma automática el tráfico entrante de pauta publicitaria.",
+            idDrive: "1syylv2avv-DaDc13-hkpuXylpmWflu6p"
+          },
+          {
+            titulo: "Chatbot de Ventas Paso a Paso",
+            descripcion: "Estructura un embudo automatizado para calificar leads y presentar precios.",
+            idDrive: "11cMdlItws4QVjdxFUMgD6WL3i4TxBSja"
+          },
+          {
+            titulo: "Disparadores por Palabras Clave",
+            descripcion: "Responde de forma inmediata según los términos exactos escritos por el cliente.",
+            idDrive: "1ivO1ID-Cx2FYYW19e2FhDCGqd4j-U_CL"
+          },
+          {
+            titulo: "Cambio Automático de Etiquetas con el Bot",
+            descripcion: "Mueve contactos entre etiquetas según las respuestas seleccionadas en el chat.",
+            idDrive: "16PHsINGgWf884pYviHp-Os1-c7YInT5R"
+          },
+          {
+            titulo: "Duplicación y Edición Ágil de Flujos",
+            descripcion: "Modifica y clona respuestas automáticas con total facilidad.",
+            idDrive: "1vq2wyDuom6xVllFMpLErV_3iMnSjiuYd"
+          }
+        ]
+      },
+      {
+        idModulo: "api",
+        nombreModulo: "API Tutorial",
+        descripcion: "Conecta tu CRM con software externo mediante llamadas de API.",
+        videos: [
+          {
+            titulo: "Conexión y Funcionalidades de la API del CRM",
+            descripcion: "Sincroniza bases de datos y gestiona disparos desde plataformas externas.",
+            idDrive: "1FOazWUjfThTqSVnPlK6TrX4DcAw9LQlz"
+          }
+        ]
+      },
+      {
+        idModulo: "webhook",
+        nombreModulo: "Webhook Tutorial",
+        descripcion: "Envía datos y eventos en tiempo real hacia plataformas de terceros.",
+        videos: [
+          {
+            titulo: "Configuración de Webhooks en Tiempo Real",
+            descripcion: "Dispara notificaciones inmediatas a Make, Zapier o servidores propios.",
+            idDrive: "18e3f0o0AfwmVjm8JLey__8yI4BROEKPf"
+          }
+        ]
+      },
+      {
+        idModulo: "bulk-send",
+        nombreModulo: "Bulk Send Tutorial",
+        descripcion: "Aprende a ejecutar campañas masivas seguras desde bases de datos.",
+        videos: [
+          {
+            titulo: "Envíos Masivos desde Bases de Datos (Método Nuevo)",
+            descripcion: "Importa archivos CSV y listas externas optimizadas para WhatsApp.",
+            idDrive: "1lFX4-mH0nbqoRqdV5BAEGVNRN6-Exxlq"
+          },
+          {
+            titulo: "Creación de Plantillas para Envíos Masivos",
+            descripcion: "Diseña copies persuasivos y mensajes estructurados listos para emitir.",
+            idDrive: "1EmLdnUAJ3tHtMBJNFFQ3xukkuZb_WLV7"
+          },
+          {
+            titulo: "Disparo Masivo: Flujo Tradicional",
+            descripcion: "Conoce el método estándar para emitir mensajes a clientes agendados.",
+            idDrive: "1O8Cy42fMJ2HD2472-g6oy4vTKyaRplp5"
+          },
+          {
+            titulo: "Variables Personalizadas para Evitar Bloqueos",
+            descripcion: "Usa campos dinámicos para que cada mensaje sea único y natural.",
+            idDrive: "18EuN8BExibaHzYjHqnYfa-lcdvXSpNYU"
+          }
+        ]
+      },
+      {
+        idModulo: "crm",
+        nombreModulo: "CRM Tutorial",
+        descripcion: "Aprende la arquitectura general, instalación, etiquetas, kanban y embudos.",
+        videos: [
+          {
+            titulo: "Instalación de la Extensión en Google Chrome",
+            descripcion: "Habilita el modo desarrollador e integra el paquete de JN CRM.",
+            idDrive: "1yW_afikl-tQH-NgBAfGDKzeBUE5uxjti"
+          },
+          {
+            titulo: "Creación de Etiquetas y Pestañas del CRM",
+            descripcion: "Clasifica visualmente tus chats por colores y fases comerciales.",
+            idDrive: "1_CAQiSzqhZwK2ncO6L1gGuth1ABocjXi"
+          },
+          {
+            titulo: "Asignación y Segmentación de Contactos",
+            descripcion: "Filtra tus conversaciones dentro de las pestañas de forma organizada.",
+            idDrive: "1dlES7kPedOoJwQzTsIjRKERo0GevOt7W"
+          },
+          {
+            titulo: "Tablero Kanban: Gestión Visual de Ventas",
+            descripcion: "Mueve tarjetas de clientes entre etapas para controlar el pipeline.",
+            idDrive: "1u5GIwCqk09HxFDS0td37fSeggFsDVk48"
+          },
+          {
+            titulo: "Herramientas Avanzadas del Tablero Kanban",
+            descripcion: "Acciones directas y filtros especiales dentro del tablero interactivo.",
+            idDrive: "1d2w2xdQPvBi-R-h3v_ri3v1KN-7sQtZc"
+          },
+          {
+            titulo: "Funil de Ventas del CRM",
+            descripcion: "Mide y audita las tasas de conversión en cada etapa del embudo comercial.",
+            idDrive: "1Vqv2U2wW4CkE_eu3QGq57JDM2IrdQcS5"
+          },
+          {
+            titulo: "Configuración Visual del Entorno y Opciones del Menú",
+            descripcion: "Personaliza el aspecto y las herramientas visibles en tu panel principal.",
+            idDrive: "1tsK2LXOwl2X2O9zGerb2ddU23_UN3IDn"
+          },
+          {
+            titulo: "Ajustes Generales del CRM y Notificaciones",
+            descripcion: "Mantén sincronizadas tus preferencias y entérate de las últimas actualizaciones.",
+            idDrive: "10gKXHmGQMQm5choqrN7wuqjFtWc1tF4m"
+          }
+        ]
+      },
+      {
+        idModulo: "multi-service",
+        nombreModulo: "Multi Service Tutorial",
+        descripcion: "Menús de selección interactivos y listas múltiples para WhatsApp.",
+        videos: [
+          {
+            titulo: "Listas de Opciones desde el Constructor de Flujos",
+            descripcion: "Crea menús desplegables para guiar la atención del usuario.",
+            idDrive: "1JVKKtXGDOZzYPOfse0inwHP1MioOSZJx"
+          },
+          {
+            titulo: "Listas Interactivas en Envíos Masivos y Respuestas",
+            descripcion: "Aumenta la tasa de respuesta integrando menús en tus difusiones.",
+            idDrive: "1wOhH9TCS2f9ooJmpWLfBz062NWVw0r_p"
+          },
+          {
+            titulo: "Listas Interactivas con Disparadores del Chatbot",
+            descripcion: "Activa menús automáticos según palabras clave recibidas.",
+            idDrive: "1pE6ljy4uK7CWCDzs8wMXphrDt-okrhlx"
+          },
+          {
+            titulo: "Exportación de Contactos por Pestañas y Etiquetas",
+            descripcion: "Descarga listas de prospectos directamente en archivos unificados.",
+            idDrive: "1rpKl5qMYXVUKNlePhFNyJRk1Zv2da8sZ"
+          }
+        ]
+      },
+      {
+        idModulo: "notes",
+        nombreModulo: "Notes Tutorial",
+        descripcion: "Gestiona anotaciones internas y datos particulares de cada contacto.",
+        videos: [
+          {
+            titulo: "Crear Notas Internas del Cliente en el CRM",
+            descripcion: "Guarda apuntes privados en cada chat sin que el cliente los vea.",
+            idDrive: "1d8cuL8YBTMJIsmVCrlM7Tl8Gcrq5dhZn"
+          },
+          {
+            titulo: "Modificación de Datos e Información Comercial",
+            descripcion: "Actualiza nombres, detalles de venta y parámetros desde el panel.",
+            idDrive: "18HS9HxdCVB-6VDsNPAqSNvUT_jaYy8ny"
+          },
+          {
+            titulo: "Firma del Remitente y Atajos Rápidos",
+            descripcion: "Identifica al asesor comercial responsable de responder la conversación.",
+            idDrive: "1DOybO6wJB4wQX6DVep-NJK9OhztwaW09"
+          }
+        ]
+      },
+      {
+        idModulo: "reminders",
+        nombreModulo: "Reminders Tutorial",
+        descripcion: "Recordatorios de contacto y tareas de reagendamiento comercial.",
+        videos: [
+          {
+            titulo: "Configuración de Alarmas y Recordatorios de Venta",
+            descripcion: "Establece alertas puntuales para recontactar leads en momentos clave.",
+            idDrive: "1lpDeXrrUGE_jur7JdLLWXQaX-szyj1gY"
+          },
+          {
+            titulo: "Iniciar Chats Directos con Nuevos Números",
+            descripcion: "Abre conversaciones con prospectos sin necesidad de agendarlos en el móvil.",
+            idDrive: "1Or44VhUj93XuisZg7LVcqmmchH6v-Szn"
+          }
+        ]
+      }
+    ];
+
+    const navListEl = document.getElementById("nav-list");
+    const moduleTitleEl = document.getElementById("module-title");
+    const moduleDescEl = document.getElementById("module-desc");
+    const videoGridEl = document.getElementById("video-grid");
+    const videoFrameEl = document.getElementById("video-frame");
+
+    let currentModuleIndex = 0;
+    let currentVideoIndex = 0;
+
+    function renderNav() {
+      navListEl.innerHTML = "";
+      tutorialesData.forEach((mod, idx) => {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.className = `nav-btn ${idx === currentModuleIndex ? 'active' : ''}`;
+        a.href = `#${mod.idModulo}`;
+        a.innerHTML = `
+          <span>${mod.nombreModulo}</span>
+          <span class="nav-count">${mod.videos.length}</span>
+        `;
+        a.addEventListener("click", (e) => {
+          e.preventDefault();
+          history.pushState(null, null, `#${mod.idModulo}`);
+          loadModule(idx, 0);
+        });
+        li.appendChild(a);
+        navListEl.appendChild(li);
+      });
+    }
+
+    function loadModule(modIdx, vidIdx = 0) {
+      currentModuleIndex = modIdx;
+      currentVideoIndex = vidIdx;
+      const mod = tutorialesData[modIdx];
+
+      moduleTitleEl.innerHTML = `<span>${mod.nombreModulo}</span>`;
+      moduleDescEl.textContent = mod.descripcion;
+
+      renderNav();
+      renderVideos(mod);
+      playVideo(mod.videos[vidIdx].idDrive);
+    }
+
+    function renderVideos(mod) {
+      videoGridEl.innerHTML = "";
+      mod.videos.forEach((vid, vIdx) => {
+        const card = document.createElement("div");
+        card.className = `video-card ${vIdx === currentVideoIndex ? 'active' : ''}`;
+        card.innerHTML = `
+          <div>
+            <div class="card-top">
+              <div class="play-icon">▶</div>
+              <div class="card-title">${vid.titulo}</div>
+            </div>
+            <div class="card-desc">${vid.descripcion}</div>
+          </div>
+        `;
+        card.addEventListener("click", () => {
+          currentVideoIndex = vIdx;
+          renderVideos(mod);
+          playVideo(vid.idDrive);
+        });
+        videoGridEl.appendChild(card);
+      });
+    }
+
+    function playVideo(idDrive) {
+      videoFrameEl.src = `https://drive.google.com/file/d/${idDrive}/preview`;
+    }
+
+    function checkHashRoute() {
+      const hash = window.location.hash.replace("#", "");
+      if (hash) {
+        const foundIndex = tutorialesData.findIndex(m => m.idModulo === hash);
+        if (foundIndex !== -1) {
+          loadModule(foundIndex, 0);
+          return;
+        }
+      }
+      loadModule(0, 0);
+    }
+
+    window.addEventListener("hashchange", checkHashRoute);
+    window.addEventListener("DOMContentLoaded", checkHashRoute);
+  </script>
+</body>
+</html>
