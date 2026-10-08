@@ -7,13 +7,13 @@
   <meta name="description" content="El CRM más potente para WhatsApp. Embudos Kanban, chatbots interactivos, envíos masivos y marca blanca para revendedores.">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          font fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+          fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
           colors: {
             gold: {
               100: '#FDFBF2',
@@ -38,6 +38,10 @@
     }
   </script>
   <style>
+    body {
+      background-color: #080C14 !important;
+      color: #e2e8f0;
+    }
     .gradient-gold-text {
       background: linear-gradient(135deg, #FFF1B0 0%, #D4AF37 50%, #9A700C 100%);
       -webkit-background-clip: text;
@@ -221,9 +225,8 @@
       </div>
     </section>
 
-    <!-- SECCIÓN NUEVA: ACADEMIA Y VIDEOTUTORIALES -->
+    <!-- SECCIÓN ACADEMIA Y VIDEOTUTORIALES -->
     <section id="academia" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-brand-border/60 relative overflow-hidden">
-      <!-- Resplandor de fondo -->
       <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gold-500/10 blur-[130px] rounded-full pointer-events-none"></div>
 
       <div class="relative z-10 bg-gradient-to-b from-brand-card via-slate-900/90 to-brand-card border border-gold-500/30 rounded-3xl p-8 sm:p-12 lg:p-16 shadow-[0_0_50px_rgba(212,175,55,0.08)]">
