@@ -351,21 +351,23 @@
         </button>
       </div>
 
-      <!-- Videos Instructivos -->
+      <!-- Videos Instructivos Usuario -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+        <!-- Video 1: Instalación -->
         <div class="bg-slate-900/60 p-5 rounded-2xl border border-slate-800">
           <h4 class="text-base font-bold text-white mb-2">1. ¿Cómo instalar la extensión en Chrome?</h4>
           <p class="text-xs text-slate-400 mb-4">Aprende a descomprimir y activar el modo desarrollador.</p>
           <div class="relative pt-[56.25%] rounded-xl overflow-hidden bg-black">
-            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/xPn2oRLmzVM?start=55" title="Instalación" frameborder="0" allowfullscreen></iframe>
+            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/8Sin6gy00ow" title="Instalación" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
 
+        <!-- Video 2: Actualización -->
         <div class="bg-slate-900/60 p-5 rounded-2xl border border-slate-800">
           <h4 class="text-base font-bold text-white mb-2">2. ¿Cómo actualizarla sin perder tus datos?</h4>
           <p class="text-xs text-slate-400 mb-4">Conserva tus etiquetas, chats clasificados y respuestas rápidas.</p>
           <div class="relative pt-[56.25%] rounded-xl overflow-hidden bg-black">
-            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/xPn2oRLmzVM?start=55" title="Actualización" frameborder="0" allowfullscreen></iframe>
+            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/IzMnoqULrj4" title="Actualización" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
       </div>
@@ -445,7 +447,7 @@
         </form>
       </div>
 
-      <!-- 2. SEGUNDA SECCIÓN: GENERADOR RÁPIDO DE ENLACE DE WHATSAPP (ABAJO CON BADGE MÁS GRANDE) -->
+      <!-- 2. SEGUNDA SECCIÓN: GENERADOR RÁPIDO DE ENLACE DE WHATSAPP -->
       <div class="bg-gradient-to-br from-emerald-950/40 via-slate-900 to-slate-950 p-6 sm:p-8 rounded-3xl border border-emerald-500/30 mb-8 shadow-xl">
         <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
           <div class="flex items-center gap-2.5">
@@ -513,12 +515,12 @@
         </div>
       </div>
 
-      <!-- VIDEO TUTORIAL RESELLER -->
+      <!-- 3. VIDEO TUTORIAL ADMINISTRADOR / RESELLER -->
       <div class="bg-slate-900/60 p-6 rounded-3xl border border-slate-800">
         <h4 class="text-base font-bold text-white mb-2">Video Tutorial: ¿Cómo instalar y verificar tu extensión personalizada?</h4>
         <p class="text-xs text-slate-400 mb-4">Aprende a probar tu archivo compilado, verificar que tu logo se visualice correctamente y cargarla en Chrome.</p>
         <div class="relative pt-[56.25%] rounded-2xl overflow-hidden bg-black shadow-2xl">
-          <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/xPn2oRLmzVM?start=55" title="Tutorial Reseller" frameborder="0" allowfullscreen></iframe>
+          <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/eEpAOYSJnbs" title="Tutorial Reseller" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
       </div>
 
@@ -684,436 +686,4 @@
         tipo: "reseller",
         badge: "Inicia tu Negocio",
         precios: { COP: 85000, USD: 24, ARS: 36000, SOLES: "84" },
-        bold: "https://checkout.bold.co/payment/LNK_9F0ABUSLEA",
-        paypal: "https://www.paypal.com/ncp/payment/FCPFELBV8UW26"
-      },
-      {
-        nombre: "Plan Reseller 500 Licencias",
-        desc: "Acceso por 1 año para comercializar con tu marca. Incluye paquete de 500 licencias para revender al precio que quieras.",
-        tipo: "reseller",
-        badge: "Paquete Anual",
-        precios: { COP: 170000, USD: 49, ARS: 73000, SOLES: "170" },
-        bold: "https://checkout.bold.co/payment/LNK_LM4ZO3DQEA",
-        paypal: "https://www.paypal.com/ncp/payment/QPMLTG98RXHS4"
-      },
-      {
-        nombre: "Plan Reseller Completo (18 Meses)",
-        desc: "Acceso total durante 18 meses. Licencias ilimitadas, panel reseller full, marca blanca personalizada y actualizaciones.",
-        tipo: "reseller",
-        badge: "🔥 Recomendado",
-        precios: { COP: 345000, USD: 99, ARS: 148000, SOLES: "346" },
-        bold: "https://checkout.bold.co/payment/LNK_58KR9HYIEM",
-        paypal: "https://www.paypal.com/ncp/payment/MJ69US9RZ3UY2"
-      }
-    ];
-
-    let estado = {
-      rol: 'usuario',
-      moneda: 'COP',
-      periodo: 'Mensual'
-    };
-
-    let versionOficialGlobal = '9.5.3.83';
-
-    async function cargarVersionOficial() {
-      const badge = document.getElementById('badge-version-actual');
-      try {
-        const res = await fetch('https://jnwebpro-n8n.5ddkar.easypanel.host/webhook/consultar-version');
-        const data = await res.json();
-        if (data && data.version_pura) {
-          versionOficialGlobal = data.version_pura;
-          if (badge) {
-            badge.innerText = `Versión Actual: ${data.version}`;
-          }
-        }
-      } catch (error) {
-        if (badge) {
-          badge.innerText = `Versión Actual: v${versionOficialGlobal}`;
-        }
-      }
-    }
-
-    function cambiarRol(nuevoRol) {
-      estado.rol = nuevoRol;
-      const tabUsr = document.getElementById('tab-rol-usuario');
-      const tabRes = document.getElementById('tab-rol-reseller');
-      const contenedorPeriodo = document.getElementById('contenedor-periodo');
-
-      if (nuevoRol === 'usuario') {
-        tabUsr.className = 'px-6 py-2.5 rounded-xl font-bold text-sm btn-gold';
-        tabRes.className = 'px-6 py-2.5 rounded-xl font-bold text-sm text-slate-400 hover:text-white transition-all';
-        contenedorPeriodo.classList.remove('hidden');
-      } else {
-        tabRes.className = 'px-6 py-2.5 rounded-xl font-bold text-sm btn-gold';
-        tabUsr.className = 'px-6 py-2.5 rounded-xl font-bold text-sm text-slate-400 hover:text-white transition-all';
-        contenedorPeriodo.classList.add('hidden');
-      }
-      renderPrecios();
-    }
-
-    function cambiarMoneda(nuevaMoneda) {
-      estado.moneda = nuevaMoneda;
-      ['COP', 'USD', 'ARS', 'SOLES'].forEach(m => {
-        const btn = document.getElementById(`btn-moneda-${m}`);
-        if (m === nuevaMoneda) {
-          btn.className = 'px-3 py-1.5 rounded-lg btn-gold';
-        } else {
-          btn.className = 'px-3 py-1.5 rounded-lg text-slate-400 hover:text-white';
-        }
-      });
-      renderPrecios();
-    }
-
-    function cambiarPeriodo(nuevoPeriodo) {
-      estado.periodo = nuevoPeriodo;
-      ['Mensual', 'Trimestral', 'Semestral', 'Anual'].forEach(p => {
-        const btn = document.getElementById(`btn-periodo-${p}`);
-        if (p === nuevoPeriodo) {
-          btn.className = 'px-3 py-1.5 rounded-lg bg-slate-800 text-gold-300 border border-gold-500/30';
-        } else {
-          btn.className = 'px-3 py-1.5 rounded-lg text-slate-400 hover:text-white';
-        }
-      });
-      renderPrecios();
-    }
-
-    function renderPrecios() {
-      const contenedor = document.getElementById('grid-precios');
-      contenedor.innerHTML = '';
-
-      let filtrados = [];
-      if (estado.rol === 'usuario') {
-        filtrados = PRODUCTOS.filter(p => p.tipo === 'usuario' && p.periodo === estado.periodo);
-      } else {
-        filtrados = PRODUCTOS.filter(p => p.tipo === 'reseller');
-      }
-
-      filtrados.forEach(item => {
-        const valor = item.precios[estado.moneda];
-        const simbolo = estado.moneda === 'SOLES' ? 'S/' : '$';
-        const formatoPrecio = typeof valor === 'number' ? valor.toLocaleString('es-CO') : valor;
-        const nombreMonedaCompleto = NOMBRES_MONEDAS[estado.moneda];
-
-        const card = document.createElement('div');
-        card.className = "bg-brand-card border border-brand-border hover:border-gold-500/60 rounded-3xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:shadow-2xl relative";
-
-        card.innerHTML = `
-          <div>
-            ${item.badge ? `<span class="inline-block px-3 py-1 badge-gold rounded-full text-xs font-extrabold mb-4 uppercase">${item.badge}</span>` : ''}
-            <h3 class="text-xl font-black text-white">${item.nombre}</h3>
-            <p class="text-xs text-slate-400 mt-2 min-h-[48px] leading-relaxed">${item.desc}</p>
-            
-            <div class="my-6 border-y border-slate-800 py-4">
-              <span class="text-xs font-semibold text-slate-400">Inversión:</span>
-              <div class="flex items-baseline gap-1 mt-1">
-                <span class="text-3xl sm:text-4xl font-black text-white">${simbolo} ${formatoPrecio}</span>
-                <span class="text-xs font-bold text-gold-400">${estado.moneda}</span>
-              </div>
-              <span class="text-xs font-medium text-gold-300/80 block mt-1 lowercase">(${nombreMonedaCompleto})</span>
-            </div>
-          </div>
-
-          <div class="space-y-3 pt-2">
-            <a href="${item.bold}" target="_blank" rel="noopener noreferrer" class="w-full text-center block btn-gold py-3 px-4 rounded-xl text-xs sm:text-sm shadow-md">
-              💳 Pagar con Bold (Tarjeta / PSE)
-            </a>
-            <a href="${item.paypal}" target="_blank" rel="noopener noreferrer" class="w-full text-center block bg-blue-600 hover:bg-blue-500 text-white font-bold py-2.5 px-4 rounded-xl text-xs transition-all">
-              🅿️ Pagar con PayPal
-            </a>
-            <a href="https://wa.me/573214120734?text=Hola,%20deseo%20adquirir%20el%20plan:%20${encodeURIComponent(item.nombre)}%20(${simbolo}%20${formatoPrecio}%20${nombreMonedaCompleto})" target="_blank" class="w-full text-center block bg-brand-wa/10 hover:bg-brand-wa hover:text-black border border-brand-wa/30 text-brand-wa font-bold py-2.5 px-4 rounded-xl text-xs transition-all">
-              💬 Comprar por WhatsApp
-            </a>
-          </div>
-        `;
-        contenedor.appendChild(card);
-      });
-    }
-
-    // GESTIÓN LOGIN Y VISTAS
-    function abrirModalLogin() {
-      document.getElementById('modal-login').classList.remove('hidden');
-    }
-    function cerrarModalLogin() {
-      document.getElementById('modal-login').classList.add('hidden');
-    }
-
-    async function ejecutarLogin(e) {
-      e.preventDefault();
-      const email = document.getElementById('login-email').value.trim();
-      const password = document.getElementById('login-password').value.trim();
-      const errBox = document.getElementById('login-error');
-      const btn = document.getElementById('btn-login-submit');
-
-      errBox.classList.add('hidden');
-      btn.innerText = 'Validando credenciales...';
-      btn.disabled = true;
-
-      try {
-        const response = await fetch('https://jnwebpro-n8n.5ddkar.easypanel.host/webhook/login-jncrm', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, password })
-        });
-
-        const data = await response.json();
-
-        if (data.autenticado) {
-          localStorage.setItem('jncrm_session', JSON.stringify(data));
-          cerrarModalLogin();
-          activarVistaRol(data.rol);
-        } else {
-          errBox.innerText = data.mensaje || 'Correo o contraseña incorrectos.';
-          errBox.classList.remove('hidden');
-        }
-      } catch (err) {
-        errBox.innerText = 'Error al conectar con el servidor de autenticación.';
-        errBox.classList.remove('hidden');
-      } finally {
-        btn.innerText = 'Iniciar Sesión';
-        btn.disabled = false;
-      }
-    }
-
-    function activarVistaRol(rol) {
-      document.getElementById('vista-landing').classList.add('hidden');
-      if (rol === 'reseller') {
-        document.getElementById('vista-reseller').classList.remove('hidden');
-        document.getElementById('vista-usuario').classList.add('hidden');
-      } else {
-        document.getElementById('vista-usuario').classList.remove('hidden');
-        document.getElementById('vista-reseller').classList.add('hidden');
-        cargarVersionOficial();
-      }
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function cerrarSesion() {
-      localStorage.removeItem('jncrm_session');
-      document.getElementById('vista-usuario').classList.add('hidden');
-      document.getElementById('vista-reseller').classList.add('hidden');
-      document.getElementById('vista-landing').classList.remove('hidden');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // DESCARGA USUARIO OFICIAL (CON ANIMACIÓN)
-    async function descargarExtensionSegura() {
-      const modal = document.getElementById('modal-descarga-loader');
-      const btn = document.getElementById('btn-descarga-ext');
-      const spinner = document.getElementById('descarga-spinner');
-      const titulo = document.getElementById('descarga-titulo');
-      const mensaje = document.getElementById('descarga-mensaje');
-      const progresoBox = document.getElementById('descarga-progreso-box');
-
-      titulo.innerText = "Compilando Extensión JN CRM...";
-      mensaje.innerHTML = `Por favor espera unos segundos. Nuestro servidor está empaquetando la versión oficial <span class='text-gold-400 font-bold'>JN CRM V${versionOficialGlobal}</span> para tu navegador.`;
-      spinner.classList.remove('hidden');
-      progresoBox.classList.remove('hidden');
-      modal.classList.remove('hidden');
-
-      btn.disabled = true;
-      btn.innerText = "⏳ Preparando descarga...";
-
-      const webhookUrl = "https://jnwebpro-n8n.5ddkar.easypanel.host/webhook/descargar-extension-crm";
-
-      try {
-        const response = await fetch(webhookUrl);
-        if (!response.ok) throw new Error("Fallo en la respuesta del servidor");
-
-        const blob = await response.blob();
-        const downloadUrl = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = downloadUrl;
-        a.download = `JN_CRM_V${versionOficialGlobal}.zip`;
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        window.URL.revokeObjectURL(downloadUrl);
-
-        titulo.innerText = "¡Descarga Lista!";
-        mensaje.innerText = `El paquete JN_CRM_V${versionOficialGlobal}.zip se ha descargado correctamente.`;
-        spinner.classList.add('hidden');
-        progresoBox.classList.add('hidden');
-
-        setTimeout(() => {
-          modal.classList.add('hidden');
-          btn.disabled = false;
-          btn.innerHTML = "<span>⬇️ Descargar Extensión JN CRM (.ZIP)</span>";
-        }, 2500);
-
-      } catch (err) {
-        window.location.href = webhookUrl;
-        setTimeout(() => {
-          modal.classList.add('hidden');
-          btn.disabled = false;
-          btn.innerHTML = "<span>⬇️ Descargar Extensión JN CRM (.ZIP)</span>";
-        }, 3500);
-      }
-    }
-
-    // HERRAMIENTA WHATSAPP: SIN ALERTAS INTRUSIVAS
-    function crearEnlaceWhatsApp() {
-      const pais = document.getElementById('wa-tool-pais').value;
-      const numInput = document.getElementById('wa-tool-numero');
-      const numRaw = numInput.value.trim();
-      const txtRaw = document.getElementById('wa-tool-mensaje').value.trim();
-      const resInput = document.getElementById('wa-tool-resultado');
-      const btn = document.getElementById('btn-wa-generar');
-
-      if (!numRaw) {
-        numInput.focus();
-        numInput.classList.add('border-rose-500');
-        setTimeout(() => numInput.classList.remove('border-rose-500'), 2000);
-        return;
-      }
-
-      const numLimpio = numRaw.replace(/\D/g, '');
-      const telefonoCompleto = `${pais}${numLimpio}`;
-      let enlace = `https://wa.me/${telefonoCompleto}`;
-      if (txtRaw) {
-        enlace += `?text=${encodeURIComponent(txtRaw)}`;
-      }
-
-      resInput.value = enlace;
-      navigator.clipboard.writeText(enlace);
-
-      if (btn) {
-        const textoOriginal = btn.innerHTML;
-        btn.innerHTML = '<span>✅ ¡Copiado!</span>';
-        btn.classList.add('bg-emerald-300');
-        setTimeout(() => {
-          btn.innerHTML = textoOriginal;
-          btn.classList.remove('bg-emerald-300');
-        }, 2000);
-      }
-    }
-
-    function pegarEnlaceEnCampo(destino) {
-      let enlace = document.getElementById('wa-tool-resultado').value.trim();
-      
-      // Si aún no han pulsado generar pero ya escribieron un número, lo generamos de inmediato
-      if (!enlace) {
-        crearEnlaceWhatsApp();
-        enlace = document.getElementById('wa-tool-resultado').value.trim();
-      }
-
-      if (!enlace) {
-        const numInput = document.getElementById('wa-tool-numero');
-        numInput.focus();
-        numInput.classList.add('border-rose-500');
-        setTimeout(() => numInput.classList.remove('border-rose-500'), 2000);
-        return;
-      }
-
-      if (destino === 'bienvenida') {
-        const campo = document.getElementById('reseller-url-bienvenida');
-        campo.value = enlace;
-        campo.classList.add('border-emerald-500');
-        setTimeout(() => campo.classList.remove('border-emerald-500'), 1500);
-      } else if (destino === 'despedida') {
-        const campo = document.getElementById('reseller-url-despedida');
-        campo.value = enlace;
-        campo.classList.add('border-emerald-500');
-        setTimeout(() => campo.classList.remove('border-emerald-500'), 1500);
-      }
-    }
-
-    // COMPILADOR RESELLER (CON ANIMACIÓN DE CARGA Y SIN ALERTS)
-    async function generarExtensionReseller(e) {
-      e.preventDefault();
-      const nombre = document.getElementById('reseller-nombre').value.trim();
-      const urlBienvenida = document.getElementById('reseller-url-bienvenida').value.trim();
-      const urlDespedida = document.getElementById('reseller-url-despedida').value.trim();
-      const fileInput = document.getElementById('reseller-logo');
-      const btn = document.getElementById('btn-compilar-ext');
-
-      if (!fileInput.files[0]) {
-        fileInput.focus();
-        return;
-      }
-
-      // Animación en el Modal Idéntica a la Descarga Oficial
-      const modal = document.getElementById('modal-descarga-loader');
-      const spinner = document.getElementById('descarga-spinner');
-      const titulo = document.getElementById('descarga-titulo');
-      const mensaje = document.getElementById('descarga-mensaje');
-      const progresoBox = document.getElementById('descarga-progreso-box');
-
-      titulo.innerText = `Compilando Extensión ${nombre}...`;
-      mensaje.innerHTML = `Estamos inyectando tu logotipo, configurando tus URLs personalizadas y generando el paquete ZIP exclusivo para tus clientes.`;
-      spinner.classList.remove('hidden');
-      progresoBox.classList.remove('hidden');
-      modal.classList.remove('hidden');
-
-      btn.disabled = true;
-      btn.innerText = "⚙️ Procesando compilación...";
-
-      const reader = new FileReader();
-      reader.onload = async function() {
-        const base64Logo = reader.result;
-        try {
-          const res = await fetch('https://jnwebpro-n8n.5ddkar.easypanel.host/webhook/generar-extension-reseller', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              nombre: nombre,
-              urlBienvenida: urlBienvenida,
-              urlDespedida: urlDespedida,
-              logoBase64: base64Logo
-            })
-          });
-
-          if (!res.ok) throw new Error("Fallo en la generación");
-
-          const blob = await res.blob();
-          const downloadUrl = window.URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          const nombreLimpio = nombre.replace(/[^a-zA-Z0-9_-]/g, '_');
-          a.href = downloadUrl;
-          a.download = `${nombreLimpio}_Extension_CRM.zip`;
-          document.body.appendChild(a);
-          a.click();
-          a.remove();
-          window.URL.revokeObjectURL(downloadUrl);
-
-          // Estado de Éxito dentro del Modal
-          titulo.innerText = "¡Extensión Compilada con Éxito!";
-          mensaje.innerText = `El paquete ${nombreLimpio}_Extension_CRM.zip se ha generado y descargado correctamente en tu equipo.`;
-          spinner.classList.add('hidden');
-          progresoBox.classList.add('hidden');
-
-          setTimeout(() => {
-            modal.classList.add('hidden');
-            btn.disabled = false;
-            btn.innerHTML = "<span>⚙️ Compilar y Descargar Extensión Personalizada (.ZIP)</span>";
-          }, 2500);
-
-        } catch (err) {
-          console.error(err);
-          titulo.innerText = "Error en la Compilación";
-          mensaje.innerText = "Hubo un inconveniente al procesar el paquete. Por favor verifica que el logo sea un formato PNG transparente válido.";
-          spinner.classList.add('hidden');
-          progresoBox.classList.add('hidden');
-
-          setTimeout(() => {
-            modal.classList.add('hidden');
-            btn.disabled = false;
-            btn.innerHTML = "<span>⚙️ Compilar y Descargar Extensión Personalizada (.ZIP)</span>";
-          }, 3500);
-        }
-      };
-      reader.readAsDataURL(fileInput.files[0]);
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      const sesionGuardada = localStorage.getItem('jncrm_session');
-      if (sesionGuardada) {
-        try {
-          const s = JSON.parse(sesionGuardada);
-          activarVistaRol(s.rol);
-        } catch (e) {}
-      }
-      renderPrecios();
-    });
-  </script>
-</body>
-</html>
+        bold: "
