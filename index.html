@@ -75,7 +75,7 @@
   <header class="sticky top-0 z-40 bg-brand-dark/95 backdrop-blur-md border-b border-brand-border">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <a href="#" class="flex items-center gap-3">
-        <img src="assets/logo.webp" alt="JN CRM Logo" class="h-12 w-auto object-contain">
+        <img src="assets/logo.png" alt="JN CRM Logo" class="h-12 w-auto object-contain">
         <span class="text-xl font-extrabold tracking-tight gradient-gold-text hidden sm:inline">JN CRM</span>
       </a>
 
@@ -283,7 +283,7 @@
       <button onclick="cerrarModalLogin()" class="absolute top-5 right-5 text-slate-400 hover:text-white text-xl font-bold">&times;</button>
       
       <div class="text-center mb-6">
-        <img src="assets/logo.webp" alt="JN CRM Logo" class="h-16 w-auto mx-auto mb-3 object-contain drop-shadow-[0_0_15px_rgba(212,175,55,0.3)]">
+        <img src="assets/logo.png" alt="JN CRM Logo" class="h-16 w-auto mx-auto mb-3 object-contain drop-shadow-[0_0_15px_rgba(212,175,55,0.3)]">
         <h3 class="text-2xl font-black text-white">Acceso a Clientes</h3>
         <p class="text-slate-400 text-xs mt-1">Ingresa tu correo y contraseña registrados</p>
       </div>
@@ -311,21 +311,21 @@
   <div id="modal-descarga-loader" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
     <div class="bg-brand-card border border-gold-500/40 rounded-3xl p-8 w-full max-w-md shadow-2xl text-center relative">
       
-      <!-- Spinner / Animación Dinámica -->
+      <!-- Spinner Dinámico -->
       <div id="descarga-icono-contenedor" class="relative w-20 h-20 mx-auto mb-6 flex items-center justify-center">
         <div id="descarga-spinner" class="absolute inset-0 rounded-full border-4 border-gold-500/20 border-t-gold-500 animate-spin"></div>
-        <img src="assets/logo.webp" alt="JN CRM" class="w-10 h-10 object-contain drop-shadow">
+        <img src="assets/logo.png" alt="JN CRM" class="w-10 h-10 object-contain drop-shadow">
       </div>
 
       <!-- Título de Estado -->
       <h3 id="descarga-titulo" class="text-xl font-black text-white mb-2">Compilando Extensión Oficial...</h3>
       
-      <!-- Mensaje Detallado -->
+      <!-- Mensaje Detallado Dinámico -->
       <p id="descarga-mensaje" class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
-        Por favor espera unos segundos. Nuestro servidor está preparando y empaquetando la versión oficial <span class="text-gold-400 font-bold">JN CRM V9.5.3.83</span> para tu navegador.
+        Por favor espera unos segundos. Nuestro servidor está preparando y empaquetando la versión oficial para tu navegador.
       </p>
 
-      <!-- Barra de Progreso Simulada / Estado -->
+      <!-- Barra de Progreso Simulada -->
       <div id="descarga-progreso-box" class="w-full bg-slate-900 rounded-full h-2 overflow-hidden border border-slate-800 mb-4">
         <div class="bg-gradient-to-r from-gold-500 to-amber-300 h-full w-2/3 animate-pulse"></div>
       </div>
@@ -339,7 +339,7 @@
     <div class="bg-brand-card border border-brand-border rounded-3xl p-6 sm:p-10 shadow-2xl">
       <div class="flex flex-wrap items-center justify-between border-b border-slate-800 pb-6 mb-8 gap-4">
         <div class="flex items-center gap-3">
-          <img src="assets/logo.webp" alt="JN CRM" class="h-10 w-auto object-contain">
+          <img src="assets/logo.png" alt="JN CRM" class="h-10 w-auto object-contain">
           <div>
             <span class="text-xs font-bold uppercase tracking-wider text-gold-400">Panel de Licenciatario</span>
             <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Descarga y Guías de JN CRM</h2>
@@ -350,10 +350,10 @@
         </button>
       </div>
 
-      <!-- Descarga de la Extensión (ACTUALIZADO A V9.5.3.83) -->
+      <!-- Descarga de la Extensión (Badge con ID Dinámico) -->
       <div class="bg-slate-900/80 border border-gold-500/30 rounded-2xl p-6 text-center mb-10">
-        <span class="inline-block px-3 py-1 rounded-full badge-gold text-xs font-bold mb-3">
-          Versión Actual: v9.5.3.83
+        <span id="badge-version-actual" class="inline-block px-3 py-1 rounded-full badge-gold text-xs font-bold mb-3">
+          Versión Actual: Detectando...
         </span>
         <h3 class="text-xl font-bold text-white mb-2">Descarga la Última Versión Oficial de la Extensión</h3>
         <p class="text-slate-400 text-sm max-w-xl mx-auto mb-5">
@@ -398,7 +398,7 @@
     <div class="bg-brand-card border border-brand-border rounded-3xl p-6 sm:p-10 shadow-2xl">
       <div class="flex flex-wrap items-center justify-between border-b border-slate-800 pb-6 mb-8 gap-4">
         <div class="flex items-center gap-3">
-          <img src="assets/logo.webp" alt="JN CRM" class="h-10 w-auto object-contain">
+          <img src="assets/logo.png" alt="JN CRM" class="h-10 w-auto object-contain">
           <div>
             <span class="text-xs font-bold uppercase tracking-wider text-purple-400">Portal de Distribuidor Exclusivo</span>
             <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Generador de Extensión Marca Blanca</h2>
@@ -449,7 +449,7 @@
   <footer class="bg-black border-t border-brand-border py-10 px-4 text-center text-xs text-slate-500">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-2">
-        <img src="assets/logo.webp" alt="JN CRM" class="h-8 w-auto object-contain">
+        <img src="assets/logo.png" alt="JN CRM" class="h-8 w-auto object-contain">
         <span class="font-bold text-slate-300">JN CRM Online</span>
       </div>
       <p>© 2026 JN CRM. Todos los derechos reservados. Automatización avanzada para WhatsApp.</p>
@@ -467,7 +467,7 @@
     </svg>
   </a>
 
-  <!-- LOGICA JAVASCRIPT -->
+  <!-- LOGICA JAVASCRIPT: PRECIOS, AUTENTICACIÓN Y CONSULTA DINÁMICA -->
   <script>
     const NOMBRES_MONEDAS = {
       COP: 'pesos colombianos',
@@ -633,6 +633,28 @@
       periodo: 'Mensual'
     };
 
+    let versionOficialGlobal = '9.5.3.83'; // Versión base inicial
+
+    // FUNCIÓN: Consultar versión dinámica en segundo plano (vía webhook GET)
+    async function cargarVersionOficial() {
+      const badge = document.getElementById('badge-version-actual');
+      try {
+        const res = await fetch('https://jnwebpro-n8n.5ddkar.easypanel.host/webhook/consultar-version');
+        const data = await res.json();
+        if (data && data.version_pura) {
+          versionOficialGlobal = data.version_pura;
+          if (badge) {
+            badge.innerText = `Versión Actual: ${data.version}`;
+          }
+        }
+      } catch (error) {
+        console.error('Error al consultar versión en tiempo real:', error);
+        if (badge) {
+          badge.innerText = `Versión Actual: v${versionOficialGlobal}`;
+        }
+      }
+    }
+
     function cambiarRol(nuevoRol) {
       estado.rol = nuevoRol;
       const tabUsr = document.getElementById('tab-rol-usuario');
@@ -782,6 +804,7 @@
       } else {
         document.getElementById('vista-usuario').classList.remove('hidden');
         document.getElementById('vista-reseller').classList.add('hidden');
+        cargarVersionOficial(); // Inicia la consulta rápida al cargar el panel
       }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -794,7 +817,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // DESCARGA DINÁMICA CON AVISO DE COMPILACIÓN
+    // DESCARGA DINÁMICA CON AVISO DE COMPILACIÓN Y VERSIÓN DETECTADA
     async function descargarExtensionSegura() {
       const modal = document.getElementById('modal-descarga-loader');
       const btn = document.getElementById('btn-descarga-ext');
@@ -803,9 +826,8 @@
       const mensaje = document.getElementById('descarga-mensaje');
       const progresoBox = document.getElementById('descarga-progreso-box');
 
-      // Estado inicial del modal
       titulo.innerText = "Compilando Extensión JN CRM...";
-      mensaje.innerHTML = "Por favor espera unos segundos. Nuestro servidor está empaquetando la versión oficial <span class='text-gold-400 font-bold'>JN CRM V9.5.3.83</span> para tu navegador.";
+      mensaje.innerHTML = `Por favor espera unos segundos. Nuestro servidor está empaquetando la versión oficial <span class='text-gold-400 font-bold'>JN CRM V${versionOficialGlobal}</span> para tu navegador.`;
       spinner.classList.remove('hidden');
       progresoBox.classList.remove('hidden');
       modal.classList.remove('hidden');
@@ -821,19 +843,17 @@
 
         const blob = await response.blob();
         
-        // Disparador de descarga nativa en el navegador
         const downloadUrl = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = downloadUrl;
-        a.download = "JN_CRM_V9.5.3.83.zip";
+        a.download = `JN_CRM_V${versionOficialGlobal}.zip`;
         document.body.appendChild(a);
         a.click();
         a.remove();
         window.URL.revokeObjectURL(downloadUrl);
 
-        // Feedback visual de éxito
         titulo.innerText = "¡Descarga Lista!";
-        mensaje.innerText = "El paquete JN_CRM_V9.5.3.83.zip se ha descargado correctamente en tu equipo.";
+        mensaje.innerText = `El paquete JN_CRM_V${versionOficialGlobal}.zip se ha descargado correctamente en tu equipo.`;
         spinner.classList.add('hidden');
         progresoBox.classList.add('hidden');
 
@@ -845,7 +865,6 @@
 
       } catch (err) {
         console.error("Error en la descarga:", err);
-        // Fallback por si la política CORS del navegador intercepta el blob
         window.location.href = webhookUrl;
 
         setTimeout(() => {
