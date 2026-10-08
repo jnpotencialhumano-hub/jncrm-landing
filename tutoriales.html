@@ -3,10 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JN CRM - Academia de Tutoriales</title>
+  <title>JN CRM - Academia Oficial de Tutoriales</title>
+  <meta name="description" content="Aprende a automatizar y escalar tus ventas por WhatsApp Web paso a paso con los videotutoriales oficiales de JN CRM.">
+
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="shortcut icon" type="image/png" href="assets/logo.png">
+  <link rel="apple-touch-icon" href="assets/logo.png">
+
+  <!-- VISTA PREVIA PARA WHATSAPP Y REDES SOCIALES (OPEN GRAPH) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="JN CRM">
+  <meta property="og:title" content="JN CRM - Academia Oficial de Tutoriales">
+  <meta property="og:description" content="Domina tu WhatsApp Web: Chatbots interactivos, embudos Kanban, respuestas rápidas, envíos masivos y automatizaciones sin código.">
+  <meta property="og:url" content="https://jncrm.online/tutoriales.html">
+  <meta property="og:image" content="https://jncrm.online/assets/logo.png">
+  <meta property="og:image:secure_url" content="https://jncrm.online/assets/logo.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="500">
+  <meta property="og:image:height" content="500">
+
+  <!-- TWITTER CARDS -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="JN CRM - Academia Oficial de Tutoriales">
+  <meta name="twitter:description" content="Aprende a automatizar y escalar tus ventas por WhatsApp Web paso a paso con JN CRM.">
+  <meta name="twitter:image" content="https://jncrm.online/assets/logo.png">
+
+  <!-- TIPOGRAFÍA PLUS JAKARTA SANS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg-dark: #080c14;
@@ -36,10 +63,10 @@
     }
 
     header {
-      background-color: rgba(15, 23, 42, 0.85);
+      background-color: rgba(15, 23, 42, 0.9);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-color);
-      padding: 16px 28px;
+      padding: 14px 28px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -51,7 +78,8 @@
     .brand-container {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
+      text-decoration: none;
     }
 
     .brand-logo {
@@ -74,11 +102,33 @@
       font-weight: 800;
     }
 
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-home {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      transition: all 0.2s ease;
+    }
+
+    .btn-home:hover {
+      color: var(--text-main);
+      border-color: var(--gold);
+    }
+
     .badge-pro {
       background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.05));
       border: 1px solid var(--gold);
       color: var(--gold);
-      padding: 4px 10px;
+      padding: 4px 12px;
       border-radius: 999px;
       font-size: 0.75rem;
       font-weight: 700;
@@ -88,9 +138,9 @@
 
     .layout-container {
       display: grid;
-      grid-template-columns: 340px 1fr;
+      grid-template-columns: 360px 1fr;
       flex: 1;
-      min-height: calc(100vh - 75px);
+      min-height: calc(100vh - 71px);
     }
 
     /* BARRA LATERAL (SECCIONES) */
@@ -99,23 +149,23 @@
       border-right: 1px solid var(--border-color);
       padding: 24px 16px;
       overflow-y: auto;
-      max-height: calc(100vh - 75px);
+      max-height: calc(100vh - 71px);
     }
 
     .sidebar-heading {
-      font-size: 0.8rem;
-      font-weight: 700;
+      font-size: 0.75rem;
+      font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--gold);
       margin-bottom: 16px;
-      padding-left: 12px;
+      padding-left: 10px;
     }
 
     .nav-list {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
       list-style: none;
     }
 
@@ -124,12 +174,12 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      padding: 12px 14px;
+      padding: 11px 14px;
       border-radius: 10px;
       background: transparent;
       border: 1px solid transparent;
       color: var(--text-muted);
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
       text-align: left;
       cursor: pointer;
@@ -146,33 +196,40 @@
       background: linear-gradient(90deg, rgba(212, 175, 55, 0.15), rgba(15, 23, 42, 0.4));
       border-color: var(--border-gold);
       color: var(--gold);
+      font-weight: 700;
     }
 
     .nav-count {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       background-color: rgba(255, 255, 255, 0.06);
-      padding: 2px 8px;
+      padding: 2px 7px;
       border-radius: 999px;
+      color: var(--text-muted);
     }
 
-    /* REPRODUCTOR Y CONTENIDO */
+    .nav-btn.active .nav-count {
+      background-color: rgba(212, 175, 55, 0.2);
+      color: var(--gold);
+    }
+
+    /* CONTENEDOR PRINCIPAL Y REPRODUCTOR */
     .content-area {
       padding: 32px 40px;
       overflow-y: auto;
-      max-height: calc(100vh - 75px);
+      max-height: calc(100vh - 71px);
     }
 
     .module-header {
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
     .module-title {
-      font-size: 1.75rem;
+      font-size: 1.65rem;
       font-weight: 800;
       color: var(--text-main);
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       margin-bottom: 6px;
     }
 
@@ -182,7 +239,8 @@
 
     .module-desc {
       color: var(--text-muted);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
+      line-height: 1.5;
     }
 
     .player-wrapper {
@@ -192,7 +250,7 @@
       border-radius: 16px;
       overflow: hidden;
       border: 1px solid var(--border-gold);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
       aspect-ratio: 16 / 9;
       margin-bottom: 28px;
     }
@@ -203,12 +261,12 @@
       border: none;
     }
 
-    /* LISTA DE VIDEOS */
+    /* CUADRÍCULA DE VIDEOS */
     .video-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 16px;
-      margin-top: 16px;
+      margin-top: 14px;
     }
 
     .video-card {
@@ -226,24 +284,24 @@
     .video-card:hover {
       border-color: var(--gold);
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     }
 
     .video-card.active {
       border-color: var(--gold);
-      background: linear-gradient(180deg, rgba(212, 175, 55, 0.08), rgba(15, 23, 42, 0.9));
+      background: linear-gradient(180deg, rgba(212, 175, 55, 0.08), rgba(15, 23, 42, 0.95));
     }
 
     .card-top {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
+      gap: 12px;
+      margin-bottom: 8px;
     }
 
     .play-icon {
-      width: 28px;
-      height: 28px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
       background: rgba(212, 175, 55, 0.15);
       color: var(--gold);
@@ -254,17 +312,23 @@
       flex-shrink: 0;
     }
 
+    .video-card.active .play-icon {
+      background: var(--gold);
+      color: #080c14;
+      font-weight: 800;
+    }
+
     .card-title {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 700;
       color: var(--text-main);
-      line-height: 1.3;
+      line-height: 1.35;
     }
 
     .card-desc {
-      font-size: 0.85rem;
+      font-size: 0.83rem;
       color: var(--text-muted);
-      line-height: 1.4;
+      line-height: 1.45;
       margin-top: 6px;
     }
 
@@ -279,7 +343,7 @@
       }
       .content-area {
         max-height: none;
-        padding: 24px 20px;
+        padding: 24px 18px;
       }
     }
   </style>
@@ -287,30 +351,33 @@
 <body>
 
   <header>
-    <div class="brand-container">
-      <img src="assets/logo.webp" alt="JN CRM Logo" class="brand-logo" onerror="this.style.display='none'">
+    <a href="index.html" class="brand-container">
+      <img src="assets/logo.png" alt="JN CRM" class="brand-logo" onerror="this.src='assets/logo.webp'">
       <div class="brand-title">JN <span>CRM</span></div>
+    </a>
+    <div class="header-actions">
+      <a href="index.html" class="btn-home">← Volver al Inicio</a>
+      <div class="badge-pro">Academia Oficial</div>
     </div>
-    <div class="badge-pro">Centro de Aprendizaje</div>
   </header>
 
   <div class="layout-container">
     <nav class="sidebar">
-      <div class="sidebar-heading">Módulos del Sistema</div>
+      <div class="sidebar-heading">Ruta de Aprendizaje</div>
       <ul class="nav-list" id="nav-list"></ul>
     </nav>
 
     <main class="content-area">
       <div class="module-header">
         <h1 class="module-title" id="module-title">Tutoriales</h1>
-        <p class="module-desc" id="module-desc">Selecciona un video para reproducir la lección detallada.</p>
+        <p class="module-desc" id="module-desc">Selecciona una lección para iniciar la reproducción.</p>
       </div>
 
       <div class="player-wrapper">
         <iframe id="video-frame" src="" allow="autoplay; fullscreen"></iframe>
       </div>
 
-      <h2 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 14px; color: var(--gold);">Lecciones de este módulo:</h2>
+      <h2 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 14px; color: var(--gold);">Lecciones del Módulo:</h2>
       <div class="video-grid" id="video-grid"></div>
     </main>
   </div>
@@ -318,288 +385,288 @@
   <script>
     const tutorialesData = [
       {
-        idModulo: "quick-reply",
-        nombreModulo: "Quick Reply Tutorial",
-        descripcion: "Optimiza la atención de tus clientes con respuestas rápidas y atajos inmediatos.",
-        videos: [
-          {
-            titulo: "Navegación e Interfaz: Abrir y Ocultar Respuestas Rápidas",
-            descripcion: "Despliega el panel de respuestas rápidas y mantén tu entorno de trabajo organizado.",
-            idDrive: "1yW_afikl-tQH-NgBAfGDKzeBUE5uxjti"
-          },
-          {
-            titulo: "Creación y Configuración de Respuestas desde Cero",
-            descripcion: "Aprende el paso a paso para redactar y guardar respuestas listas para usar.",
-            idDrive: "1Qv3toxO3JPoP3L2Ubt256gZWuPOj_hTG"
-          },
-          {
-            titulo: "Mensaje de Bienvenida para Nuevos Prospectos",
-            descripcion: "Estructura un saludo inicial persuasivo y profesional.",
-            idDrive: "1KoMX6He1a27BCf7LxmYgZ7O_GZJPXv5c"
-          },
-          {
-            titulo: "Preguntas Frecuentes (FAQ) y Testimonios",
-            descripcion: "Acelera tus cierres resolviendo dudas frecuentes en un solo clic.",
-            idDrive: "1kTcmtOSzSeMQIWUysnBLbmdpekKlzFrp"
-          },
-          {
-            titulo: "Organización por Carpetas y Categorías",
-            descripcion: "Clasifica tus respuestas por ventas, cobros o soporte técnico.",
-            idDrive: "1GFaBqBTMD0VSIeuQr80rqkZML9gf6DY8"
-          },
-          {
-            titulo: "Filtros y Búsqueda Inmediata en Chats",
-            descripcion: "Localiza y dispara respuestas al instante en cualquier conversación activa.",
-            idDrive: "1SdbM9kDYprWtaMP0Y1vrGTJYGqXLY41X"
-          }
-        ]
-      },
-      {
-        idModulo: "status",
-        nombreModulo: "Status Tutorial",
-        descripcion: "Automatiza la programación y publicación de historias en WhatsApp.",
-        videos: [
-          {
-            titulo: "Programación y Publicación de Estados en WhatsApp",
-            descripcion: "Agenda historias de ofertas y contenidos para mantener impacto continuo de marca.",
-            idDrive: "1Fnrebh2raamRxVv1w46_B_3BkbTMN9p1"
-          }
-        ]
-      },
-      {
-        idModulo: "follow-up",
-        nombreModulo: "Follow-up Tutorial",
-        descripcion: "Estructura recordatorios comerciales para no perder prospectos clave.",
-        videos: [
-          {
-            titulo: "Creación y Gestión de Seguimientos de Venta",
-            descripcion: "Programa alertas de contacto y haz seguimiento efectivo en las etapas de negociación.",
-            idDrive: "1lpDeXrrUGE_jur7JdLLWXQaX-szyj1gY"
-          }
-        ]
-      },
-      {
-        idModulo: "scheduled-messages",
-        nombreModulo: "Scheduled Messages Tutorial",
-        descripcion: "Automatiza difusiones y mensajes con disparos en fechas u horas programadas.",
-        videos: [
-          {
-            titulo: "Lanzamiento y Programación de Difusiones",
-            descripcion: "Aprende a preparar y calendarizar envíos a tus contactos segmentados.",
-            idDrive: "1O8Cy42fMJ2HD2472-g6oy4vTKyaRplp5"
-          },
-          {
-            titulo: "Personalización con Variables Dinámicas",
-            descripcion: "Integra nombres y datos dinámicos en tus mensajes programados masivos.",
-            idDrive: "18EuN8BExibaHzYjHqnYfa-lcdvXSpNYU"
-          }
-        ]
-      },
-      {
-        idModulo: "flow",
-        nombreModulo: "Flow Tutorial",
-        descripcion: "Diseña secuencias lógicas e interacciones automatizadas de alto impacto.",
-        videos: [
-          {
-            titulo: "Diseño y Construcción de Flujos Automatizados",
-            descripcion: "Crea rutas guiadas paso a paso para dirigir prospectos según sus decisiones.",
-            idDrive: "1jTK3Mr-2oGb4LIKoq7rJRxntB73lfoer"
-          }
-        ]
-      },
-      {
-        idModulo: "auto-service",
-        nombreModulo: "Auto Service Tutorial",
-        descripcion: "Configura chatbots y respuestas inteligentes las 24 horas del día.",
-        videos: [
-          {
-            titulo: "Chatbot para Campañas de Redes Sociales",
-            descripcion: "Recibe y atiende de forma automática el tráfico entrante de pauta publicitaria.",
-            idDrive: "1syylv2avv-DaDc13-hkpuXylpmWflu6p"
-          },
-          {
-            titulo: "Chatbot de Ventas Paso a Paso",
-            descripcion: "Estructura un embudo automatizado para calificar leads y presentar precios.",
-            idDrive: "11cMdlItws4QVjdxFUMgD6WL3i4TxBSja"
-          },
-          {
-            titulo: "Disparadores por Palabras Clave",
-            descripcion: "Responde de forma inmediata según los términos exactos escritos por el cliente.",
-            idDrive: "1ivO1ID-Cx2FYYW19e2FhDCGqd4j-U_CL"
-          },
-          {
-            titulo: "Cambio Automático de Etiquetas con el Bot",
-            descripcion: "Mueve contactos entre etiquetas según las respuestas seleccionadas en el chat.",
-            idDrive: "16PHsINGgWf884pYviHp-Os1-c7YInT5R"
-          },
-          {
-            titulo: "Duplicación y Edición Ágil de Flujos",
-            descripcion: "Modifica y clona respuestas automáticas con total facilidad.",
-            idDrive: "1vq2wyDuom6xVllFMpLErV_3iMnSjiuYd"
-          }
-        ]
-      },
-      {
-        idModulo: "api",
-        nombreModulo: "API Tutorial",
-        descripcion: "Conecta tu CRM con software externo mediante llamadas de API.",
-        videos: [
-          {
-            titulo: "Conexión y Funcionalidades de la API del CRM",
-            descripcion: "Sincroniza bases de datos y gestiona disparos desde plataformas externas.",
-            idDrive: "1FOazWUjfThTqSVnPlK6TrX4DcAw9LQlz"
-          }
-        ]
-      },
-      {
-        idModulo: "webhook",
-        nombreModulo: "Webhook Tutorial",
-        descripcion: "Envía datos y eventos en tiempo real hacia plataformas de terceros.",
-        videos: [
-          {
-            titulo: "Configuración de Webhooks en Tiempo Real",
-            descripcion: "Dispara notificaciones inmediatas a Make, Zapier o servidores propios.",
-            idDrive: "18e3f0o0AfwmVjm8JLey__8yI4BROEKPf"
-          }
-        ]
-      },
-      {
-        idModulo: "bulk-send",
-        nombreModulo: "Bulk Send Tutorial",
-        descripcion: "Aprende a ejecutar campañas masivas seguras desde bases de datos.",
-        videos: [
-          {
-            titulo: "Envíos Masivos desde Bases de Datos (Método Nuevo)",
-            descripcion: "Importa archivos CSV y listas externas optimizadas para WhatsApp.",
-            idDrive: "1lFX4-mH0nbqoRqdV5BAEGVNRN6-Exxlq"
-          },
-          {
-            titulo: "Creación de Plantillas para Envíos Masivos",
-            descripcion: "Diseña copies persuasivos y mensajes estructurados listos para emitir.",
-            idDrive: "1EmLdnUAJ3tHtMBJNFFQ3xukkuZb_WLV7"
-          },
-          {
-            titulo: "Disparo Masivo: Flujo Tradicional",
-            descripcion: "Conoce el método estándar para emitir mensajes a clientes agendados.",
-            idDrive: "1O8Cy42fMJ2HD2472-g6oy4vTKyaRplp5"
-          },
-          {
-            titulo: "Variables Personalizadas para Evitar Bloqueos",
-            descripcion: "Usa campos dinámicos para que cada mensaje sea único y natural.",
-            idDrive: "18EuN8BExibaHzYjHqnYfa-lcdvXSpNYU"
-          }
-        ]
-      },
-      {
         idModulo: "crm",
-        nombreModulo: "CRM Tutorial",
-        descripcion: "Aprende la arquitectura general, instalación, etiquetas, kanban y embudos.",
+        nombreModulo: "1. CRM General, Kanban y Etiquetas",
+        descripcion: "Instalación de la extensión, segmentación visual por etiquetas y gestión de prospectos en el tablero Kanban.",
         videos: [
           {
             titulo: "Instalación de la Extensión en Google Chrome",
-            descripcion: "Habilita el modo desarrollador e integra el paquete de JN CRM.",
+            descripcion: "Aprende a activar el modo desarrollador, cargar la carpeta y anclar la extensión de JN CRM.",
             idDrive: "1yW_afikl-tQH-NgBAfGDKzeBUE5uxjti"
           },
           {
-            titulo: "Creación de Etiquetas y Pestañas del CRM",
-            descripcion: "Clasifica visualmente tus chats por colores y fases comerciales.",
+            titulo: "Creación y Personalización de Etiquetas y Pestañas",
+            descripcion: "Organiza tus chats clasificándolos por colores y carpetas personalizadas en la bandeja de entrada.",
             idDrive: "1_CAQiSzqhZwK2ncO6L1gGuth1ABocjXi"
           },
           {
-            titulo: "Asignación y Segmentación de Contactos",
-            descripcion: "Filtra tus conversaciones dentro de las pestañas de forma organizada.",
+            titulo: "Segmentación y Asignación de Contactos en Pestañas",
+            descripcion: "Filtra, mueve y distribuye chats individuales o masivos entre etiquetas de forma ágil.",
             idDrive: "1dlES7kPedOoJwQzTsIjRKERo0GevOt7W"
           },
           {
-            titulo: "Tablero Kanban: Gestión Visual de Ventas",
-            descripcion: "Mueve tarjetas de clientes entre etapas para controlar el pipeline.",
+            titulo: "Fundamentos del Tablero Kanban de Ventas",
+            descripcion: "Monitorea visualmente tus oportunidades comerciales arrastrando clientes de una etapa a otra.",
             idDrive: "1u5GIwCqk09HxFDS0td37fSeggFsDVk48"
           },
           {
-            titulo: "Herramientas Avanzadas del Tablero Kanban",
-            descripcion: "Acciones directas y filtros especiales dentro del tablero interactivo.",
+            titulo: "Herramientas Avanzadas y Gestión en Kanban",
+            descripcion: "Aplica filtros rápidos y ejecuta acciones directas sobre las tarjetas dentro del tablero.",
             idDrive: "1d2w2xdQPvBi-R-h3v_ri3v1KN-7sQtZc"
           },
           {
-            titulo: "Funil de Ventas del CRM",
-            descripcion: "Mide y audita las tasas de conversión en cada etapa del embudo comercial.",
+            titulo: "Estructura del Embudo Comercial (Funil de Ventas)",
+            descripcion: "Mide la efectividad de tus asesores y la tasa de conversión en cada fase del ciclo de compra.",
             idDrive: "1Vqv2U2wW4CkE_eu3QGq57JDM2IrdQcS5"
           },
           {
-            titulo: "Configuración Visual del Entorno y Opciones del Menú",
-            descripcion: "Personaliza el aspecto y las herramientas visibles en tu panel principal.",
+            titulo: "Personalización Visual y Opciones del Menú Principal",
+            descripcion: "Ajusta la visibilidad de las herramientas y organiza tu panel de control según tu flujo diario.",
             idDrive: "1tsK2LXOwl2X2O9zGerb2ddU23_UN3IDn"
           },
           {
-            titulo: "Ajustes Generales del CRM y Notificaciones",
-            descripcion: "Mantén sincronizadas tus preferencias y entérate de las últimas actualizaciones.",
+            titulo: "Ajustes Generales del CRM y Centro de Notificaciones",
+            descripcion: "Sincroniza tus preferencias de sistema y mantente al día con las últimas actualizaciones.",
             idDrive: "10gKXHmGQMQm5choqrN7wuqjFtWc1tF4m"
           }
         ]
       },
       {
-        idModulo: "multi-service",
-        nombreModulo: "Multi Service Tutorial",
-        descripcion: "Menús de selección interactivos y listas múltiples para WhatsApp.",
+        idModulo: "quick-reply",
+        nombreModulo: "2. Respuestas Rápidas",
+        descripcion: "Multiplica la velocidad de atención preparando plantillas de texto, catálogos y argumentos de cierre en un clic.",
         videos: [
           {
-            titulo: "Listas de Opciones desde el Constructor de Flujos",
-            descripcion: "Crea menús desplegables para guiar la atención del usuario.",
-            idDrive: "1JVKKtXGDOZzYPOfse0inwHP1MioOSZJx"
+            titulo: "Navegación e Interfaz: Abrir y Ocultar Respuestas Rápidas",
+            descripcion: "Conoce el entorno de trabajo y mantén despejada tu bandeja en WhatsApp Web.",
+            idDrive: "1yW_afikl-tQH-NgBAfGDKzeBUE5uxjti"
           },
           {
-            titulo: "Listas Interactivas en Envíos Masivos y Respuestas",
-            descripcion: "Aumenta la tasa de respuesta integrando menús en tus difusiones.",
-            idDrive: "1wOhH9TCS2f9ooJmpWLfBz062NWVw0r_p"
+            titulo: "Creación y Configuración de Respuestas desde Cero",
+            descripcion: "Aprende a redactar, parametrizar y guardar plantillas listas para disparar de inmediato.",
+            idDrive: "1Qv3toxO3JPoP3L2Ubt256gZWuPOj_hTG"
           },
           {
-            titulo: "Listas Interactivas con Disparadores del Chatbot",
-            descripcion: "Activa menús automáticos según palabras clave recibidas.",
-            idDrive: "1pE6ljy4uK7CWCDzs8wMXphrDt-okrhlx"
+            titulo: "Plantilla de Saludo y Bienvenida para Nuevos Contactos",
+            descripcion: "Configura un mensaje cálido e impactante para causar una excelente primera impresión.",
+            idDrive: "1KoMX6He1a27BCf7LxmYgZ7O_GZJPXv5c"
           },
           {
-            titulo: "Exportación de Contactos por Pestañas y Etiquetas",
-            descripcion: "Descarga listas de prospectos directamente en archivos unificados.",
-            idDrive: "1rpKl5qMYXVUKNlePhFNyJRk1Zv2da8sZ"
+            titulo: "Respuestas a Preguntas Frecuentes (FAQ) y Testimonios",
+            descripcion: "Resuelve objeciones comunes y envía pruebas sociales para acelerar tus ventas.",
+            idDrive: "1kTcmtOSzSeMQIWUysnBLbmdpekKlzFrp"
+          },
+          {
+            titulo: "Organización por Carpetas y Categorías Comerciales",
+            descripcion: "Agrupa mensajes por áreas (ventas, soporte, cotizaciones) para que tu equipo no se confunda.",
+            idDrive: "1GFaBqBTMD0VSIeuQr80rqkZML9gf6DY8"
+          },
+          {
+            titulo: "Filtros y Búsqueda Inmediata en Chats Activos",
+            descripcion: "Encuentra y envía la respuesta perfecta en segundos directamente desde la conversación.",
+            idDrive: "1SdbM9kDYprWtaMP0Y1vrGTJYGqXLY41X"
           }
         ]
       },
       {
         idModulo: "notes",
-        nombreModulo: "Notes Tutorial",
-        descripcion: "Gestiona anotaciones internas y datos particulares de cada contacto.",
+        nombreModulo: "3. Notas Internas y Ficha del Cliente",
+        descripcion: "Registra datos de valor, notas privadas para tu equipo y administra la información comercial de cada lead.",
         videos: [
           {
-            titulo: "Crear Notas Internas del Cliente en el CRM",
-            descripcion: "Guarda apuntes privados en cada chat sin que el cliente los vea.",
+            titulo: "Creación de Notas Internas Privadas en el Chat",
+            descripcion: "Guarda acuerdos, presupuestos y recordatorios dentro de cada chat que solo tú y tu equipo pueden ver.",
             idDrive: "1d8cuL8YBTMJIsmVCrlM7Tl8Gcrq5dhZn"
           },
           {
-            titulo: "Modificación de Datos e Información Comercial",
-            descripcion: "Actualiza nombres, detalles de venta y parámetros desde el panel.",
+            titulo: "Edición y Actualización de Datos del Cliente",
+            descripcion: "Modifica nombres, empresas y campos comerciales directamente desde el panel lateral.",
             idDrive: "18HS9HxdCVB-6VDsNPAqSNvUT_jaYy8ny"
           },
           {
-            titulo: "Firma del Remitente y Atajos Rápidos",
-            descripcion: "Identifica al asesor comercial responsable de responder la conversación.",
+            titulo: "Firma Automática del Asesor y Atajos Complementarios",
+            descripcion: "Identifica a cada ejecutivo comercial en sus respuestas y optimiza las tareas diarias.",
             idDrive: "1DOybO6wJB4wQX6DVep-NJK9OhztwaW09"
           }
         ]
       },
       {
         idModulo: "reminders",
-        nombreModulo: "Reminders Tutorial",
-        descripcion: "Recordatorios de contacto y tareas de reagendamiento comercial.",
+        nombreModulo: "4. Recordatorios y Nuevos Chats",
+        descripcion: "Inicia conversaciones sin agregar contactos a la agenda y programa alarmas puntuales de contacto.",
         videos: [
           {
-            titulo: "Configuración de Alarmas y Recordatorios de Venta",
-            descripcion: "Establece alertas puntuales para recontactar leads en momentos clave.",
-            idDrive: "1lpDeXrrUGE_jur7JdLLWXQaX-szyj1gY"
+            titulo: "Iniciar Conversaciones con Números No Agendados",
+            descripcion: "Abre chats inmediatos ingresando cualquier número con indicativo sin saturar la memoria de tu móvil.",
+            idDrive: "1Or44VhUj93XuisZg7LVcqmmchH6v-Szn"
           },
           {
-            titulo: "Iniciar Chats Directos con Nuevos Números",
-            descripcion: "Abre conversaciones con prospectos sin necesidad de agendarlos en el móvil.",
-            idDrive: "1Or44VhUj93XuisZg7LVcqmmchH6v-Szn"
+            titulo: "Configuración de Recordatorios y Alarmas Comerciales",
+            descripcion: "Agenda avisos para retomar negociaciones en el día y la hora exactos acordados con el cliente.",
+            idDrive: "1lpDeXrrUGE_jur7JdLLWXQaX-szyj1gY"
+          }
+        ]
+      },
+      {
+        idModulo: "bulk-send",
+        nombreModulo: "5. Envíos Masivos",
+        descripcion: "Aprende a ejecutar campañas de difusión masiva seguras desde bases de datos externas o etiquetas internas.",
+        videos: [
+          {
+            titulo: "Envíos Masivos desde Bases de Datos (Método Optimizado)",
+            descripcion: "Importa archivos y listas externas para ejecutar campañas respetando los intervalos de seguridad.",
+            idDrive: "1lFX4-mH0nbqoRqdV5BAEGVNRN6-Exxlq"
+          },
+          {
+            titulo: "Diseño y Preparación de Plantillas para Difusión",
+            descripcion: "Estructura mensajes persuasivos con llamados a la acción claros listos para difusión masiva.",
+            idDrive: "1EmLdnUAJ3tHtMBJNFFQ3xukkuZb_WLV7"
+          },
+          {
+            titulo: "Ejecución de Difusiones: Método Estándar",
+            descripcion: "Envía mensajes directos a listas de contactos ya existentes en tu cuenta de WhatsApp.",
+            idDrive: "1O8Cy42fMJ2HD2472-g6oy4vTKyaRplp5"
+          },
+          {
+            titulo: "Uso de Variables Dinámicas para Proteger tu Cuenta",
+            descripcion: "Personaliza cada mensaje con el nombre y datos de cada persona para evitar reportes de spam.",
+            idDrive: "18EuN8BExibaHzYjHqnYfa-lcdvXSpNYU"
+          }
+        ]
+      },
+      {
+        idModulo: "scheduled-messages",
+        nombreModulo: "6. Mensajes Programados",
+        descripcion: "Agenda envíos automáticos para que se disparen en fechas y horas estratégicas.",
+        videos: [
+          {
+            titulo: "Programación de Mensajes en Fechas y Horas Específicas",
+            descripcion: "Automatiza recordatorios de citas, vencimientos o felicitaciones en el momento exacto.",
+            idDrive: "1O8Cy42fMJ2HD2472-g6oy4vTKyaRplp5"
+          },
+          {
+            titulo: "Variables Personalizadas en Mensajes Programados",
+            descripcion: "Combina programación diferida con personalización individualizada.",
+            idDrive: "18EuN8BExibaHzYjHqnYfa-lcdvXSpNYU"
+          }
+        ]
+      },
+      {
+        idModulo: "status",
+        nombreModulo: "7. Estados de WhatsApp",
+        descripcion: "Automatiza y calendariza la subida de historias en WhatsApp para mantener tu marca siempre visible.",
+        videos: [
+          {
+            titulo: "Programación y Publicación Automática de Estados",
+            descripcion: "Aprende a cargar promociones y agendar historias automáticas para tus contactos frecuentes.",
+            idDrive: "1Fnrebh2raamRxVv1w46_B_3BkbTMN9p1"
+          }
+        ]
+      },
+      {
+        idModulo: "follow-up",
+        nombreModulo: "8. Seguimientos Comerciales",
+        descripcion: "Estructura un sistema metódico para recuperar prospectos indecisos y cerrar más ventas.",
+        videos: [
+          {
+            titulo: "Creación y Gestión de Flujos de Seguimiento",
+            descripcion: "Diseña secuencias de reactivación comercial para no descuidar ninguna propuesta enviada.",
+            idDrive: "1lpDeXrrUGE_jur7JdLLWXQaX-szyj1gY"
+          }
+        ]
+      },
+      {
+        idModulo: "flow",
+        nombreModulo: "9. Constructor de Flujos",
+        descripcion: "Diseña rutas de interacción automatizadas con respuestas condicionales sin escribir código.",
+        videos: [
+          {
+            titulo: "Diseño y Construcción de Flujos Automatizados",
+            descripcion: "Estructura conversaciones inteligentes paso a paso guiando al cliente hacia el objetivo deseado.",
+            idDrive: "1jTK3Mr-2oGb4LIKoq7rJRxntB73lfoer"
+          }
+        ]
+      },
+      {
+        idModulo: "auto-service",
+        nombreModulo: "10. Chatbot y Auto-Servicio",
+        descripcion: "Atención comercial y soporte 24/7 con bots interactivos y disparadores automáticos.",
+        videos: [
+          {
+            titulo: "Captura de Tráfico desde Anuncios en Redes Sociales",
+            descripcion: "Configura respuestas inmediatas para leads provenientes de pauta en Facebook, Instagram y TikTok.",
+            idDrive: "1syylv2avv-DaDc13-hkpuXylpmWflu6p"
+          },
+          {
+            titulo: "Creación de tu Primer Chatbot de Ventas",
+            descripcion: "Presenta tu catálogo, resuelve dudas y guía la compra de forma 100% desatendida.",
+            idDrive: "11cMdlItws4QVjdxFUMgD6WL3i4TxBSja"
+          },
+          {
+            titulo: "Disparadores Automáticos por Palabras Clave",
+            descripcion: "Activa respuestas específicas en cuanto el usuario escriba palabras como 'precio', 'info' o 'demo'.",
+            idDrive: "1ivO1ID-Cx2FYYW19e2FhDCGqd4j-U_CL"
+          },
+          {
+            titulo: "Clasificación Dinámica: Cambio Automático de Etiquetas",
+            descripcion: "Mueve los contactos entre etapas de tu embudo según las decisiones que tomen dentro del bot.",
+            idDrive: "16PHsINGgWf884pYviHp-Os1-c7YInT5R"
+          },
+          {
+            titulo: "Duplicación y Edición Rápida de Flujos de Chatbot",
+            descripcion: "Clona configuraciones exitosas y actualiza tus mensajes en cuestión de segundos.",
+            idDrive: "1vq2wyDuom6xVllFMpLErV_3iMnSjiuYd"
+          }
+        ]
+      },
+      {
+        idModulo: "multi-service",
+        nombreModulo: "11. Listas Interactivas y Opciones",
+        descripcion: "Diseña menús interactivos desplegables para guiar al usuario y exporta contactos segmentados.",
+        videos: [
+          {
+            titulo: "Menús de Selección Interactivos en Flujos",
+            descripcion: "Estructura listas con botones y opciones limpias para organizar las respuestas de tus prospectos.",
+            idDrive: "1JVKKtXGDOZzYPOfse0inwHP1MioOSZJx"
+          },
+          {
+            titulo: "Listas de Opciones en Envíos Masivos y Respuestas Rápidas",
+            descripcion: "Aumenta la interacción en tus mensajes permitiendo que el usuario elija con un solo toque.",
+            idDrive: "1wOhH9TCS2f9ooJmpWLfBz062NWVw0r_p"
+          },
+          {
+            titulo: "Integración de Listas Interactivas con el Chatbot",
+            descripcion: "Combina palabras clave para disparar opciones organizadas de productos o departamentos.",
+            idDrive: "1pE6ljy4uK7CWCDzs8wMXphrDt-okrhlx"
+          },
+          {
+            titulo: "Exportación de Contactos por Pestañas y Etiquetas",
+            descripcion: "Descarga la base de datos de tus prospectos segmentados en archivos limpios para respaldo o análisis.",
+            idDrive: "1rpKl5qMYXVUKNlePhFNyJRk1Zv2da8sZ"
+          }
+        ]
+      },
+      {
+        idModulo: "api",
+        nombreModulo: "12. Integración API del CRM",
+        descripcion: "Conecta tu CRM con sistemas externos, sitios web o pasarelas mediante llamadas API.",
+        videos: [
+          {
+            titulo: "Conexión y Funcionalidades de la API del CRM",
+            descripcion: "Aprende cómo sincronizar clientes y disparar mensajes desde aplicaciones de terceros.",
+            idDrive: "1FOazWUjfThTqSVnPlK6TrX4DcAw9LQlz"
+          }
+        ]
+      },
+      {
+        idModulo: "webhook",
+        nombreModulo: "13. Webhooks en Tiempo Real",
+        descripcion: "Sincroniza eventos en tiempo real con herramientas de automatización como n8n, Make o Zapier.",
+        videos: [
+          {
+            titulo: "Configuración de Webhooks para Eventos en Vivo",
+            descripcion: "Dispara notificaciones y traslada datos de conversaciones instantáneamente a tus servidores.",
+            idDrive: "18e3f0o0AfwmVjm8JLey__8yI4BROEKPf"
           }
         ]
       }
