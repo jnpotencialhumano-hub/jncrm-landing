@@ -88,9 +88,19 @@
       border: 1px solid rgba(212, 175, 55, 0.35);
       color: #F3E5AB;
     }
+
+    /* AJUSTE PARA PANTALLAS MÓVILES (BOTONES MONEDA Y DURACIÓN) */
+    @media (max-width: 640px) {
+      #btn-moneda-COP, #btn-moneda-USD, #btn-moneda-ARS, #btn-moneda-SOLES,
+      #btn-periodo-Mensual, #btn-periodo-Trimestral, #btn-periodo-Semestral, #btn-periodo-Anual {
+        padding-left: 2px !important;
+        padding-right: 2px !important;
+        font-size: 11px !important;
+      }
+    }
   </style>
 </head>
-  <body class="bg-brand-dark text-slate-200 font-sans antialiased selection:bg-gold-500 selection:text-black min-h-screen flex flex-col justify-between">
+<body class="bg-brand-dark text-slate-200 font-sans antialiased selection:bg-gold-500 selection:text-black min-h-screen flex flex-col justify-between">
 
   <!-- TOP BAR: ANUNCIO DEMO GRATIS -->
   <div class="bg-gradient-to-r from-gold-700 via-gold-500 to-gold-800 text-slate-950 py-2.5 px-4 text-center font-bold text-xs sm:text-sm tracking-wide shadow-md flex items-center justify-center gap-2 relative z-50">
@@ -337,24 +347,27 @@
         </div>
       </div>
 
+      <!-- SELECTORES ADAPTABLES (MONEDA Y DURACIÓN) -->
       <div class="flex flex-wrap items-center justify-between gap-4 mb-10 bg-slate-900/80 p-4 rounded-2xl border border-brand-border">
-        <div class="flex items-center gap-2">
+        <!-- Selector Moneda -->
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2 w-full lg:w-auto">
           <span class="text-xs font-semibold text-slate-400 uppercase">Moneda:</span>
-          <div class="inline-flex bg-brand-card rounded-xl p-1 border border-slate-700 text-xs font-bold gap-1">
-            <button onclick="cambiarMoneda('COP')" id="btn-moneda-COP" class="px-3 py-1.5 rounded-lg btn-gold">🇨🇴 COP</button>
-            <button onclick="cambiarMoneda('USD')" id="btn-moneda-USD" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white">🇺🇸 USD</button>
-            <button onclick="cambiarMoneda('ARS')" id="btn-moneda-ARS" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white">🇦🇷 ARS</button>
-            <button onclick="cambiarMoneda('SOLES')" id="btn-moneda-SOLES" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white">🇵🇪 SOLES</button>
+          <div class="grid grid-cols-4 w-full sm:w-auto sm:inline-flex bg-brand-card rounded-xl p-1 border border-slate-700 text-xs font-bold gap-1 text-center">
+            <button onclick="cambiarMoneda('COP')" id="btn-moneda-COP" class="px-1 sm:px-3 py-1.5 rounded-lg btn-gold text-center">🇨🇴 COP</button>
+            <button onclick="cambiarMoneda('USD')" id="btn-moneda-USD" class="px-1 sm:px-3 py-1.5 rounded-lg text-slate-400 hover:text-white text-center">🇺🇸 USD</button>
+            <button onclick="cambiarMoneda('ARS')" id="btn-moneda-ARS" class="px-1 sm:px-3 py-1.5 rounded-lg text-slate-400 hover:text-white text-center">🇦🇷 ARS</button>
+            <button onclick="cambiarMoneda('SOLES')" id="btn-moneda-SOLES" class="px-1 sm:px-3 py-1.5 rounded-lg text-slate-400 hover:text-white text-center">🇵🇪 SOLES</button>
           </div>
         </div>
 
-        <div id="contenedor-periodo" class="flex items-center gap-2">
+        <!-- Selector Duración -->
+        <div id="contenedor-periodo" class="flex flex-col sm:flex-row items-start sm:items-center gap-2 w-full lg:w-auto">
           <span class="text-xs font-semibold text-slate-400 uppercase">Duración:</span>
-          <div class="inline-flex bg-brand-card rounded-xl p-1 border border-slate-700 text-xs font-bold gap-1">
-            <button onclick="cambiarPeriodo('Mensual')" id="btn-periodo-Mensual" class="px-3 py-1.5 rounded-lg bg-slate-800 text-gold-300 border border-gold-500/30">Mensual</button>
-            <button onclick="cambiarPeriodo('Trimestral')" id="btn-periodo-Trimestral" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white">Trimestral</button>
-            <button onclick="cambiarPeriodo('Semestral')" id="btn-periodo-Semestral" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white">Semestral</button>
-            <button onclick="cambiarPeriodo('Anual')" id="btn-periodo-Anual" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white">Anual</button>
+          <div class="grid grid-cols-4 w-full sm:w-auto sm:inline-flex bg-brand-card rounded-xl p-1 border border-slate-700 text-xs font-bold gap-1 text-center">
+            <button onclick="cambiarPeriodo('Mensual')" id="btn-periodo-Mensual" class="px-1 sm:px-3 py-1.5 rounded-lg bg-slate-800 text-gold-300 border border-gold-500/30 text-center">Mensual</button>
+            <button onclick="cambiarPeriodo('Trimestral')" id="btn-periodo-Trimestral" class="px-1 sm:px-3 py-1.5 rounded-lg text-slate-400 hover:text-white text-center">Trimestral</button>
+            <button onclick="cambiarPeriodo('Semestral')" id="btn-periodo-Semestral" class="px-1 sm:px-3 py-1.5 rounded-lg text-slate-400 hover:text-white text-center">Semestral</button>
+            <button onclick="cambiarPeriodo('Anual')" id="btn-periodo-Anual" class="px-1 sm:px-3 py-1.5 rounded-lg text-slate-400 hover:text-white text-center">Anual</button>
           </div>
         </div>
       </div>
@@ -367,7 +380,7 @@
           Aceptamos transferencias por Nequi, Bancolombia, Daviplata, Yape, Produbanco, Airtm, Binance (USDT) o transferencias bancarias locales.
         </p>
         <a href="https://wa.me/573214120734?text=Hola,%20deseo%20pagar%20mi%20plan%20de%20JN%20CRM%20por%20transferencia%20manual" target="_blank" class="mt-5 inline-flex items-center gap-2 bg-brand-wa hover:bg-emerald-500 text-black font-extrabold px-6 py-3 rounded-xl transition-all shadow-lg text-sm">
-          <span>📲 Contactar Asesor de Pagos (+57 321 412 0734)</span>
+          <span>📲 Contactar Asesor de Pagos (Whatsapp)</span>
         </a>
       </div>
     </section>
@@ -859,9 +872,9 @@
       ['COP', 'USD', 'ARS', 'SOLES'].forEach(m => {
         const btn = document.getElementById(`btn-moneda-${m}`);
         if (m === nuevaMoneda) {
-          btn.className = 'px-3 py-1.5 rounded-lg btn-gold';
+          btn.className = 'px-1 sm:px-3 py-1.5 rounded-lg btn-gold text-center';
         } else {
-          btn.className = 'px-3 py-1.5 rounded-lg text-slate-400 hover:text-white';
+          btn.className = 'px-1 sm:px-3 py-1.5 rounded-lg text-slate-400 hover:text-white text-center';
         }
       });
       renderPrecios();
@@ -872,9 +885,9 @@
       ['Mensual', 'Trimestral', 'Semestral', 'Anual'].forEach(p => {
         const btn = document.getElementById(`btn-periodo-${p}`);
         if (p === nuevoPeriodo) {
-          btn.className = 'px-3 py-1.5 rounded-lg bg-slate-800 text-gold-300 border border-gold-500/30';
+          btn.className = 'px-1 sm:px-3 py-1.5 rounded-lg bg-slate-800 text-gold-300 border border-gold-500/30 text-center';
         } else {
-          btn.className = 'px-3 py-1.5 rounded-lg text-slate-400 hover:text-white';
+          btn.className = 'px-1 sm:px-3 py-1.5 rounded-lg text-slate-400 hover:text-white text-center';
         }
       });
       renderPrecios();
