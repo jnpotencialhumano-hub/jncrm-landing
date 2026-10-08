@@ -145,7 +145,7 @@
       </div>
 
       <div class="space-y-16">
-        <!-- Bloque 1: Embudo Kanban (flujo4.webp) -->
+        <!-- Bloque 1: Embudo Kanban -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-brand-card/60 border border-brand-border p-6 sm:p-10 rounded-3xl">
           <div class="lg:col-span-5 space-y-4">
             <span class="px-3 py-1 bg-blue-500/10 text-blue-400 border border-blue-500/30 text-xs font-bold rounded-lg uppercase">Organización Total</span>
@@ -159,7 +159,7 @@
           </div>
         </div>
 
-        <!-- Bloque 2: Constructor de Flujos (flujo1.webp) -->
+        <!-- Bloque 2: Constructor de Flujos -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-brand-card/60 border border-brand-border p-6 sm:p-10 rounded-3xl">
           <div class="lg:col-span-7 order-2 lg:order-1 rounded-2xl overflow-hidden border border-slate-700/80 shadow-2xl bg-slate-950">
             <img src="assets/flujo1.webp" alt="Creador Visual de Chatbots" loading="lazy" decoding="async" class="w-full h-auto object-cover hover:scale-[1.02] transition-transform duration-300">
@@ -173,7 +173,7 @@
           </div>
         </div>
 
-        <!-- Bloque 3: Auto-respuestas y Disparadores (flujo2.webp) -->
+        <!-- Bloque 3: Auto-respuestas y Disparadores -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-brand-card/60 border border-brand-border p-6 sm:p-10 rounded-3xl">
           <div class="lg:col-span-5 space-y-4">
             <span class="px-3 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-xs font-bold rounded-lg uppercase">Respuestas 24/7</span>
@@ -187,7 +187,7 @@
           </div>
         </div>
 
-        <!-- Bloque 4: Envíos Masivos Segmentados (flujo3.webp) -->
+        <!-- Bloque 4: Envíos Masivos Segmentados -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-brand-card/60 border border-brand-border p-6 sm:p-10 rounded-3xl">
           <div class="lg:col-span-7 order-2 lg:order-1 rounded-2xl overflow-hidden border border-slate-700/80 shadow-2xl bg-slate-950">
             <img src="assets/flujo3.webp" alt="Envíos masivos y segmentación" loading="lazy" decoding="async" class="w-full h-auto object-cover hover:scale-[1.02] transition-transform duration-300">
@@ -201,7 +201,7 @@
           </div>
         </div>
 
-        <!-- Bloque 5: Plantillas y Audios que parecen en vivo (flujo5.webp) -->
+        <!-- Bloque 5: Plantillas y Audios -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-brand-card/60 border border-brand-border p-6 sm:p-10 rounded-3xl">
           <div class="lg:col-span-5 space-y-4">
             <span class="px-3 py-1 bg-rose-500/10 text-rose-400 border border-rose-500/30 text-xs font-bold rounded-lg uppercase">Reparketing Instantáneo</span>
@@ -237,9 +237,8 @@
         </div>
       </div>
 
-      <!-- SELECTOR DE MONEDA (CON BANDERAS) Y PERIODO -->
+      <!-- SELECTOR DE MONEDA Y PERIODO -->
       <div class="flex flex-wrap items-center justify-between gap-4 mb-10 bg-slate-900/80 p-4 rounded-2xl border border-brand-border">
-        <!-- Selector de Moneda con banderas -->
         <div class="flex items-center gap-2">
           <span class="text-xs font-semibold text-slate-400 uppercase">Moneda:</span>
           <div class="inline-flex bg-brand-card rounded-xl p-1 border border-slate-700 text-xs font-bold gap-1">
@@ -250,7 +249,6 @@
           </div>
         </div>
 
-        <!-- Selector de Duración (Visible solo para usuarios) -->
         <div id="contenedor-periodo" class="flex items-center gap-2">
           <span class="text-xs font-semibold text-slate-400 uppercase">Duración:</span>
           <div class="inline-flex bg-brand-card rounded-xl p-1 border border-slate-700 text-xs font-bold gap-1">
@@ -262,12 +260,10 @@
         </div>
       </div>
 
-      <!-- GRID DINÁMICO DE TARJETAS DE PRECIOS -->
-      <div id="grid-precios" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Renderizado dinámico vía JavaScript -->
-      </div>
+      <!-- GRID DINÁMICO DE PRECIOS -->
+      <div id="grid-precios" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
 
-      <!-- ASESORÍA / MÉTODOS ALTERNATIVOS DE PAGO -->
+      <!-- MÉTODOS MANUALES -->
       <div class="mt-16 text-center bg-brand-card/40 border border-brand-border rounded-3xl p-8 max-w-3xl mx-auto">
         <h4 class="text-lg font-bold text-white">¿No tienes tarjeta o PayPal?</h4>
         <p class="text-slate-400 text-sm mt-1">
@@ -294,9 +290,9 @@
 
       <form id="form-login" onsubmit="ejecutarLogin(event)" class="space-y-4">
         <div>
-  <label class="block text-xs font-bold uppercase text-slate-400 mb-1">Correo Electrónico o Usuario</label>
-  <input type="text" id="login-email" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-gold-500" placeholder="tu@correo.com o tu_usuario">
-</div>
+          <label class="block text-xs font-bold uppercase text-slate-400 mb-1">Correo Electrónico o Usuario</label>
+          <input type="text" id="login-email" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-gold-500" placeholder="tu@correo.com o tu_usuario">
+        </div>
         <div>
           <label class="block text-xs font-bold uppercase text-slate-400 mb-1">Contraseña</label>
           <input type="password" id="login-password" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-gold-500" placeholder="••••••••">
@@ -308,6 +304,33 @@
           Iniciar Sesión
         </button>
       </form>
+    </div>
+  </div>
+
+  <!-- MODAL DINÁMICO: PROCESANDO Y COMPILANDO DESCARGA -->
+  <div id="modal-descarga-loader" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-brand-card border border-gold-500/40 rounded-3xl p-8 w-full max-w-md shadow-2xl text-center relative">
+      
+      <!-- Spinner / Animación Dinámica -->
+      <div id="descarga-icono-contenedor" class="relative w-20 h-20 mx-auto mb-6 flex items-center justify-center">
+        <div id="descarga-spinner" class="absolute inset-0 rounded-full border-4 border-gold-500/20 border-t-gold-500 animate-spin"></div>
+        <img src="assets/logo.webp" alt="JN CRM" class="w-10 h-10 object-contain drop-shadow">
+      </div>
+
+      <!-- Título de Estado -->
+      <h3 id="descarga-titulo" class="text-xl font-black text-white mb-2">Compilando Extensión Oficial...</h3>
+      
+      <!-- Mensaje Detallado -->
+      <p id="descarga-mensaje" class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
+        Por favor espera unos segundos. Nuestro servidor está preparando y empaquetando la versión oficial <span class="text-gold-400 font-bold">JN CRM V9.5.3.83</span> para tu navegador.
+      </p>
+
+      <!-- Barra de Progreso Simulada / Estado -->
+      <div id="descarga-progreso-box" class="w-full bg-slate-900 rounded-full h-2 overflow-hidden border border-slate-800 mb-4">
+        <div class="bg-gradient-to-r from-gold-500 to-amber-300 h-full w-2/3 animate-pulse"></div>
+      </div>
+
+      <p class="text-[11px] text-slate-500 uppercase tracking-widest font-semibold">Conexión Segura Servidor JN CRM</p>
     </div>
   </div>
 
@@ -327,17 +350,17 @@
         </button>
       </div>
 
-      <!-- Descarga de la Extensión -->
+      <!-- Descarga de la Extensión (ACTUALIZADO A V9.5.3.83) -->
       <div class="bg-slate-900/80 border border-gold-500/30 rounded-2xl p-6 text-center mb-10">
         <span class="inline-block px-3 py-1 rounded-full badge-gold text-xs font-bold mb-3">
-          Versión Actual: v7.4.2
+          Versión Actual: v9.5.3.83
         </span>
         <h3 class="text-xl font-bold text-white mb-2">Descarga la Última Versión Oficial de la Extensión</h3>
         <p class="text-slate-400 text-sm max-w-xl mx-auto mb-5">
-          Haz clic en el botón para obtener el paquete comprimido (.zip) generado directamente desde los servidores de JN CRM.
+          Haz clic en el botón para obtener el paquete comprimido (.zip) empaquetado directamente desde los servidores de JN CRM.
         </p>
-        <button onclick="descargarExtensionSegura()" id="btn-descarga-ext" class="btn-gold px-8 py-3.5 rounded-xl text-sm">
-          ⬇️ Descargar Extensión JN CRM (.ZIP)
+        <button onclick="descargarExtensionSegura()" id="btn-descarga-ext" class="btn-gold px-8 py-3.5 rounded-xl text-sm flex items-center justify-center gap-2 mx-auto">
+          <span>⬇️ Descargar Extensión JN CRM (.ZIP)</span>
         </button>
       </div>
 
@@ -444,7 +467,7 @@
     </svg>
   </a>
 
-  <!-- LOGICA JAVASCRIPT: PRECIOS, FILTROS Y AUTENTICACIÓN -->
+  <!-- LOGICA JAVASCRIPT -->
   <script>
     const NOMBRES_MONEDAS = {
       COP: 'pesos colombianos',
@@ -771,21 +794,65 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    // DESCARGA DINÁMICA CON AVISO DE COMPILACIÓN
     async function descargarExtensionSegura() {
+      const modal = document.getElementById('modal-descarga-loader');
       const btn = document.getElementById('btn-descarga-ext');
-      btn.innerText = 'Generando descarga segura...';
+      const spinner = document.getElementById('descarga-spinner');
+      const titulo = document.getElementById('descarga-titulo');
+      const mensaje = document.getElementById('descarga-mensaje');
+      const progresoBox = document.getElementById('descarga-progreso-box');
+
+      // Estado inicial del modal
+      titulo.innerText = "Compilando Extensión JN CRM...";
+      mensaje.innerHTML = "Por favor espera unos segundos. Nuestro servidor está empaquetando la versión oficial <span class='text-gold-400 font-bold'>JN CRM V9.5.3.83</span> para tu navegador.";
+      spinner.classList.remove('hidden');
+      progresoBox.classList.remove('hidden');
+      modal.classList.remove('hidden');
+
       btn.disabled = true;
+      btn.innerText = "⏳ Preparando descarga...";
+
+      const webhookUrl = "https://jnwebpro-n8n.5ddkar.easypanel.host/webhook/descargar-extension-crm";
 
       try {
-        const session = JSON.parse(localStorage.getItem('jncrm_session') || '{}');
-        window.location.href = `https://jnwebpro-n8n.5ddkar.easypanel.host/webhook/descargar-extension-crm?token=${session.token || 'user'}`;
-      } catch (e) {
-        alert('No fue posible iniciar la descarga. Contacta a soporte.');
-      } finally {
+        const response = await fetch(webhookUrl);
+        if (!response.ok) throw new Error("Fallo en la respuesta del servidor");
+
+        const blob = await response.blob();
+        
+        // Disparador de descarga nativa en el navegador
+        const downloadUrl = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = downloadUrl;
+        a.download = "JN_CRM_V9.5.3.83.zip";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        window.URL.revokeObjectURL(downloadUrl);
+
+        // Feedback visual de éxito
+        titulo.innerText = "¡Descarga Lista!";
+        mensaje.innerText = "El paquete JN_CRM_V9.5.3.83.zip se ha descargado correctamente en tu equipo.";
+        spinner.classList.add('hidden');
+        progresoBox.classList.add('hidden');
+
         setTimeout(() => {
-          btn.innerText = '⬇️ Descargar Extensión JN CRM (.ZIP)';
+          modal.classList.add('hidden');
           btn.disabled = false;
-        }, 3000);
+          btn.innerHTML = "<span>⬇️ Descargar Extensión JN CRM (.ZIP)</span>";
+        }, 2500);
+
+      } catch (err) {
+        console.error("Error en la descarga:", err);
+        // Fallback por si la política CORS del navegador intercepta el blob
+        window.location.href = webhookUrl;
+
+        setTimeout(() => {
+          modal.classList.add('hidden');
+          btn.disabled = false;
+          btn.innerHTML = "<span>⬇️ Descargar Extensión JN CRM (.ZIP)</span>";
+        }, 3500);
       }
     }
 
