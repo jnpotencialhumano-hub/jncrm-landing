@@ -303,16 +303,16 @@
     </div>
   </div>
 
-  <!-- MODAL DINÁMICO: LOADER DE DESCARGA USUARIO -->
+  <!-- MODAL DINÁMICO: LOADER DE DESCARGA / COMPILACIÓN -->
   <div id="modal-descarga-loader" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
     <div class="bg-brand-card border border-gold-500/40 rounded-3xl p-8 w-full max-w-md shadow-2xl text-center relative">
       <div id="descarga-icono-contenedor" class="relative w-20 h-20 mx-auto mb-6 flex items-center justify-center">
         <div id="descarga-spinner" class="absolute inset-0 rounded-full border-4 border-gold-500/20 border-t-gold-500 animate-spin"></div>
         <img src="assets/logo.png" alt="JN CRM" class="w-10 h-10 object-contain drop-shadow">
       </div>
-      <h3 id="descarga-titulo" class="text-xl font-black text-white mb-2">Compilando Extensión Oficial...</h3>
+      <h3 id="descarga-titulo" class="text-xl font-black text-white mb-2">Compilando Extensión...</h3>
       <p id="descarga-mensaje" class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
-        Por favor espera unos segundos. Nuestro servidor está empaquetando la versión oficial para tu navegador.
+        Por favor espera unos segundos. Nuestro servidor está preparando el paquete para tu navegador.
       </p>
       <div id="descarga-progreso-box" class="w-full bg-slate-900 rounded-full h-2 overflow-hidden border border-slate-800 mb-4">
         <div class="bg-gradient-to-r from-gold-500 to-amber-300 h-full w-2/3 animate-pulse"></div>
@@ -398,15 +398,68 @@
         </button>
       </div>
 
-      <!-- HERRAMIENTA PLUS: GENERADOR RÁPIDO DE ENLACE DE WHATSAPP -->
-      <div class="bg-gradient-to-br from-emerald-950/40 via-slate-900 to-slate-950 p-6 rounded-3xl border border-emerald-500/30 mb-8 shadow-xl">
-        <div class="flex items-center gap-2.5 mb-2">
-          <span class="text-xl">🛠️</span>
-          <h3 class="text-base font-extrabold text-white">Generador Rápido de Enlace de WhatsApp</h3>
-          <span class="text-[10px] bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">Herramienta de Apoyo</span>
+      <!-- 1. PRIMERA SECCIÓN: CONFIGURACIÓN DE MARCA BLANCA -->
+      <div class="bg-slate-900/70 p-6 sm:p-8 rounded-3xl border border-slate-800 mb-8 shadow-xl">
+        <div class="mb-6">
+          <h3 class="text-xl font-black text-white">Configuración de Marca Blanca</h3>
+          <p class="text-slate-400 text-xs mt-1 leading-relaxed">
+            Personaliza el nombre, los enlaces de redirección y el logotipo. Nuestro servidor reempaquetará el código nativo de la extensión y compilará tu archivo .ZIP listo para distribuir.
+          </p>
         </div>
-        <p class="text-slate-400 text-xs mb-5">
-          ¿No tienes una página web? Genera tu link directo de WhatsApp con mensaje personalizado y cópialo como tu enlace de Bienvenida o Soporte.
+
+        <form id="form-marca-blanca" onsubmit="generarExtensionReseller(event)" class="space-y-5">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <!-- Nombre Comercial -->
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-400 mb-1">Nombre Comercial de tu CRM *</label>
+              <input type="text" id="reseller-nombre" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-gold-500" placeholder="Ej: MiMarca CRM">
+              <span class="text-[11px] text-slate-500 mt-1 block">Aparecerá en el manifest, login y títulos de WhatsApp Web.</span>
+            </div>
+
+            <!-- Logo PNG -->
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-400 mb-1">Logotipo de tu Marca (PNG Transparente) *</label>
+              <input type="file" id="reseller-logo" accept="image/png" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2 text-sm text-slate-300 file:mr-4 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-gold-500 file:text-black hover:file:bg-gold-400">
+              <span class="text-[11px] text-slate-500 mt-1 block">Recomendado: 128x128 píxeles en PNG cuadrado sin fondo.</span>
+            </div>
+          </div>
+
+          <!-- URL de Bienvenida -->
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-400 mb-1">URL de Bienvenida (Al Instalar) *</label>
+            <input type="url" id="reseller-url-bienvenida" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-gold-500" placeholder="https://tuweb.com/bienvenida o tu enlace de WhatsApp generado">
+            <span class="text-[11px] text-slate-500 mt-1 block">Página o WhatsApp que se abrirá en Chrome apenas tu cliente instale la extensión.</span>
+          </div>
+
+          <!-- URL de Despedida -->
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-400 mb-1">URL de Despedida (Al Desinstalar) *</label>
+            <input type="url" id="reseller-url-despedida" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-gold-500" placeholder="https://tuweb.com/soporte o tu enlace de WhatsApp generado">
+            <span class="text-[11px] text-slate-500 mt-1 block">Página o WhatsApp que se abrirá si tu cliente desinstala la extensión de su navegador.</span>
+          </div>
+
+          <!-- Botón de Compilación Reseller -->
+          <button type="submit" id="btn-compilar-ext" class="w-full bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-700 text-white font-black py-4 rounded-xl hover:brightness-110 transition-all text-sm shadow-xl flex items-center justify-center gap-2">
+            <span>⚙️ Compilar y Descargar Extensión Personalizada (.ZIP)</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- 2. SEGUNDA SECCIÓN: GENERADOR RÁPIDO DE ENLACE DE WHATSAPP (ABAJO CON BADGE MÁS GRANDE) -->
+      <div class="bg-gradient-to-br from-emerald-950/40 via-slate-900 to-slate-950 p-6 sm:p-8 rounded-3xl border border-emerald-500/30 mb-8 shadow-xl">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+          <div class="flex items-center gap-2.5">
+            <span class="text-2xl">🛠️</span>
+            <h3 class="text-lg font-extrabold text-white">Generador Rápido de Enlace de WhatsApp</h3>
+          </div>
+          <!-- Badge ampliado con mayor jerarquía -->
+          <span class="text-xs sm:text-sm bg-emerald-500/20 text-emerald-300 border border-emerald-500/50 px-4 py-1.5 rounded-full font-black uppercase tracking-wider shadow-sm">
+            ⚡ HERRAMIENTA DE APOYO
+          </span>
+        </div>
+        
+        <p class="text-slate-400 text-xs sm:text-sm mb-5 leading-relaxed">
+          ¿No tienes una página web? Genera tu link directo de WhatsApp con mensaje personalizado y cópialo como tu enlace de Bienvenida o Despedida en el formulario de arriba.
         </p>
 
         <div class="grid grid-cols-1 md:grid-cols-12 gap-3 mb-4">
@@ -445,67 +498,19 @@
         </div>
 
         <div class="flex flex-wrap items-center gap-2">
-          <button type="button" onclick="crearEnlaceWhatsApp()" class="bg-brand-wa hover:bg-emerald-400 text-slate-950 font-black text-xs px-4 py-2.5 rounded-xl transition-all shadow flex items-center gap-1.5">
+          <button type="button" id="btn-wa-generar" onclick="crearEnlaceWhatsApp()" class="bg-brand-wa hover:bg-emerald-400 text-slate-950 font-black text-xs px-4 py-2.5 rounded-xl transition-all shadow flex items-center gap-1.5">
             <span>⚡ Generar Enlace</span>
           </button>
           
-          <input type="text" id="wa-tool-resultado" readonly placeholder="Aquí aparecerá tu link listo..." class="flex-grow min-w-[200px] bg-slate-950/80 border border-slate-800 rounded-xl px-3 py-2 text-xs text-emerald-400 focus:outline-none">
+          <input type="text" id="wa-tool-resultado" readonly placeholder="Aquí aparecerá tu enlace generado..." class="flex-grow min-w-[200px] bg-slate-950/80 border border-slate-800 rounded-xl px-3 py-2 text-xs text-emerald-400 focus:outline-none">
           
-          <button type="button" onclick="pegarEnlaceEnCampo('bienvenida')" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-bold px-3 py-2 rounded-xl transition-all" title="Pegar en URL de Bienvenida">
+          <button type="button" id="btn-wa-usar-bienvenida" onclick="pegarEnlaceEnCampo('bienvenida')" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-bold px-3 py-2 rounded-xl transition-all" title="Pegar en URL de Bienvenida">
             👉 Usar en Bienvenida
           </button>
-          <button type="button" onclick="pegarEnlaceEnCampo('despedida')" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-bold px-3 py-2 rounded-xl transition-all" title="Pegar en URL de Despedida">
+          <button type="button" id="btn-wa-usar-despedida" onclick="pegarEnlaceEnCampo('despedida')" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-bold px-3 py-2 rounded-xl transition-all" title="Pegar en URL de Despedida">
             👉 Usar en Despedida
           </button>
         </div>
-      </div>
-
-      <!-- FORMULARIO DE REEMPAQUETADO -->
-      <div class="bg-slate-900/70 p-6 sm:p-8 rounded-3xl border border-slate-800 mb-8">
-        <div class="mb-6">
-          <h3 class="text-lg font-black text-white">Configuración de Marca Blanca</h3>
-          <p class="text-slate-400 text-xs mt-1 leading-relaxed">
-            Personaliza el nombre, los enlaces de redirección y el logo. Nuestro servidor reempaquetará el código nativo de la extensión y te entregará el archivo .ZIP listo para vender.
-          </p>
-        </div>
-
-        <form id="form-marca-blanca" onsubmit="generarExtensionReseller(event)" class="space-y-5">
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <!-- 1. Nombre Comercial -->
-            <div>
-              <label class="block text-xs font-bold uppercase text-slate-400 mb-1">Nombre Comercial de tu CRM *</label>
-              <input type="text" id="reseller-nombre" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-gold-500" placeholder="Ej: MiMarca CRM">
-              <span class="text-[11px] text-slate-500 mt-1 block">Aparecerá en el manifest, login y títulos de WhatsApp Web.</span>
-            </div>
-
-            <!-- 2. Logo PNG -->
-            <div>
-              <label class="block text-xs font-bold uppercase text-slate-400 mb-1">Logotipo de tu Marca (PNG Transparente) *</label>
-              <input type="file" id="reseller-logo" accept="image/png" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2 text-sm text-slate-300 file:mr-4 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-gold-500 file:text-black hover:file:bg-gold-400">
-              <span class="text-[11px] text-slate-500 mt-1 block">Recomendado: 128x128 píxeles en PNG cuadrado sin fondo.</span>
-            </div>
-          </div>
-
-          <!-- 3. URL de Bienvenida -->
-          <div>
-            <label class="block text-xs font-bold uppercase text-slate-400 mb-1">URL de Bienvenida (Al Instalar) *</label>
-            <input type="url" id="reseller-url-bienvenida" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-gold-500" placeholder="https://tuweb.com/bienvenida o tu link de WhatsApp generado">
-            <span class="text-[11px] text-slate-500 mt-1 block">Página o WhatsApp que se abrirá en Chrome apenas tu cliente instale la extensión.</span>
-          </div>
-
-          <!-- 4. URL de Despedida / Soporte -->
-          <div>
-            <label class="block text-xs font-bold uppercase text-slate-400 mb-1">URL de Despedida (Al Desinstalar) *</label>
-            <input type="url" id="reseller-url-despedida" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-gold-500" placeholder="https://tuweb.com/soporte o tu link de WhatsApp generado">
-            <span class="text-[11px] text-slate-500 mt-1 block">Página o WhatsApp que se abrirá si tu cliente llega a desinstalar la extensión de su navegador.</span>
-          </div>
-
-          <!-- Botón de Compilación con Gradiente Reseller -->
-          <button type="submit" id="btn-compilar-ext" class="w-full bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-700 text-white font-black py-4 rounded-xl hover:brightness-110 transition-all text-sm shadow-xl flex items-center justify-center gap-2">
-            <span>⚙️ Compilar y Descargar Extensión Personalizada (.ZIP)</span>
-          </button>
-        </form>
       </div>
 
       <!-- VIDEO TUTORIAL RESELLER -->
@@ -890,7 +895,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // DESCARGA USUARIO OFICIAL
+    // DESCARGA USUARIO OFICIAL (CON ANIMACIÓN)
     async function descargarExtensionSegura() {
       const modal = document.getElementById('modal-descarga-loader');
       const btn = document.getElementById('btn-descarga-ext');
@@ -945,15 +950,19 @@
       }
     }
 
-    // HERRAMIENTA: GENERADOR RÁPIDO DE WHATSAPP
+    // HERRAMIENTA WHATSAPP: SIN ALERTAS INTRUSIVAS
     function crearEnlaceWhatsApp() {
       const pais = document.getElementById('wa-tool-pais').value;
-      const numRaw = document.getElementById('wa-tool-numero').value.trim();
+      const numInput = document.getElementById('wa-tool-numero');
+      const numRaw = numInput.value.trim();
       const txtRaw = document.getElementById('wa-tool-mensaje').value.trim();
       const resInput = document.getElementById('wa-tool-resultado');
+      const btn = document.getElementById('btn-wa-generar');
 
       if (!numRaw) {
-        alert('Por favor ingresa un número de teléfono celular.');
+        numInput.focus();
+        numInput.classList.add('border-rose-500');
+        setTimeout(() => numInput.classList.remove('border-rose-500'), 2000);
         return;
       }
 
@@ -966,23 +975,49 @@
 
       resInput.value = enlace;
       navigator.clipboard.writeText(enlace);
-      alert('¡Enlace generado y copiado al portapapeles!');
+
+      if (btn) {
+        const textoOriginal = btn.innerHTML;
+        btn.innerHTML = '<span>✅ ¡Copiado!</span>';
+        btn.classList.add('bg-emerald-300');
+        setTimeout(() => {
+          btn.innerHTML = textoOriginal;
+          btn.classList.remove('bg-emerald-300');
+        }, 2000);
+      }
     }
 
     function pegarEnlaceEnCampo(destino) {
-      const enlace = document.getElementById('wa-tool-resultado').value.trim();
+      let enlace = document.getElementById('wa-tool-resultado').value.trim();
+      
+      // Si aún no han pulsado generar pero ya escribieron un número, lo generamos de inmediato
       if (!enlace) {
-        alert('Primero genera un enlace con el botón verde "Generar Enlace".');
+        crearEnlaceWhatsApp();
+        enlace = document.getElementById('wa-tool-resultado').value.trim();
+      }
+
+      if (!enlace) {
+        const numInput = document.getElementById('wa-tool-numero');
+        numInput.focus();
+        numInput.classList.add('border-rose-500');
+        setTimeout(() => numInput.classList.remove('border-rose-500'), 2000);
         return;
       }
+
       if (destino === 'bienvenida') {
-        document.getElementById('reseller-url-bienvenida').value = enlace;
+        const campo = document.getElementById('reseller-url-bienvenida');
+        campo.value = enlace;
+        campo.classList.add('border-emerald-500');
+        setTimeout(() => campo.classList.remove('border-emerald-500'), 1500);
       } else if (destino === 'despedida') {
-        document.getElementById('reseller-url-despedida').value = enlace;
+        const campo = document.getElementById('reseller-url-despedida');
+        campo.value = enlace;
+        campo.classList.add('border-emerald-500');
+        setTimeout(() => campo.classList.remove('border-emerald-500'), 1500);
       }
     }
 
-    // COMPILADOR DE EXTENSIÓN RESELLER (MARCA BLANCA)
+    // COMPILADOR RESELLER (CON ANIMACIÓN DE CARGA Y SIN ALERTS)
     async function generarExtensionReseller(e) {
       e.preventDefault();
       const nombre = document.getElementById('reseller-nombre').value.trim();
@@ -992,12 +1027,25 @@
       const btn = document.getElementById('btn-compilar-ext');
 
       if (!fileInput.files[0]) {
-        alert('Por favor selecciona el logotipo en formato PNG.');
+        fileInput.focus();
         return;
       }
 
-      btn.innerText = '⚙️ Compilando extensión con tu marca... Por favor espera';
+      // Animación en el Modal Idéntica a la Descarga Oficial
+      const modal = document.getElementById('modal-descarga-loader');
+      const spinner = document.getElementById('descarga-spinner');
+      const titulo = document.getElementById('descarga-titulo');
+      const mensaje = document.getElementById('descarga-mensaje');
+      const progresoBox = document.getElementById('descarga-progreso-box');
+
+      titulo.innerText = `Compilando Extensión ${nombre}...`;
+      mensaje.innerHTML = `Estamos inyectando tu logotipo, configurando tus URLs personalizadas y generando el paquete ZIP exclusivo para tus clientes.`;
+      spinner.classList.remove('hidden');
+      progresoBox.classList.remove('hidden');
+      modal.classList.remove('hidden');
+
       btn.disabled = true;
+      btn.innerText = "⚙️ Procesando compilación...";
 
       const reader = new FileReader();
       reader.onload = async function() {
@@ -1027,13 +1075,30 @@
           a.remove();
           window.URL.revokeObjectURL(downloadUrl);
 
-          alert(`¡Extensión compilada con éxito para ${nombre}! Se ha iniciado la descarga del .ZIP.`);
+          // Estado de Éxito dentro del Modal
+          titulo.innerText = "¡Extensión Compilada con Éxito!";
+          mensaje.innerText = `El paquete ${nombreLimpio}_Extension_CRM.zip se ha generado y descargado correctamente en tu equipo.`;
+          spinner.classList.add('hidden');
+          progresoBox.classList.add('hidden');
+
+          setTimeout(() => {
+            modal.classList.add('hidden');
+            btn.disabled = false;
+            btn.innerHTML = "<span>⚙️ Compilar y Descargar Extensión Personalizada (.ZIP)</span>";
+          }, 2500);
+
         } catch (err) {
           console.error(err);
-          alert('Hubo un inconveniente al compilar la extensión. Verifica que el logo sea un archivo PNG transparente válido.');
-        } finally {
-          btn.innerText = '⚙️ Compilar y Descargar Extensión Personalizada (.ZIP)';
-          btn.disabled = false;
+          titulo.innerText = "Error en la Compilación";
+          mensaje.innerText = "Hubo un inconveniente al procesar el paquete. Por favor verifica que el logo sea un formato PNG transparente válido.";
+          spinner.classList.add('hidden');
+          progresoBox.classList.add('hidden');
+
+          setTimeout(() => {
+            modal.classList.add('hidden');
+            btn.disabled = false;
+            btn.innerHTML = "<span>⚙️ Compilar y Descargar Extensión Personalizada (.ZIP)</span>";
+          }, 3500);
         }
       };
       reader.readAsDataURL(fileInput.files[0]);
