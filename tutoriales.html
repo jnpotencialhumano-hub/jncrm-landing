@@ -392,7 +392,7 @@
           {
             titulo: "Descarga e Instalación en Google Chrome",
             descripcion: "Aprende cómo habilitar el modo desarrollador, descomprimir el paquete y anclar la extensión de JN CRM.",
-            idDrive: "1yW_afikl-tQH-NgBAfGDKzeBUE5uxjti"
+            idYoutube: "8Sin6gy00ow"
           }
         ]
       },
@@ -724,7 +724,7 @@
 
       renderNav();
       renderVideos(mod);
-      playVideo(mod.videos[vidIdx].idDrive);
+      playVideo(mod.videos[vidIdx]);
     }
 
     function renderVideos(mod) {
@@ -744,14 +744,18 @@
         card.addEventListener("click", () => {
           currentVideoIndex = vIdx;
           renderVideos(mod);
-          playVideo(vid.idDrive);
+          playVideo(vid);
         });
         videoGridEl.appendChild(card);
       });
     }
 
-    function playVideo(idDrive) {
-      videoFrameEl.src = `https://drive.google.com/file/d/${idDrive}/preview`;
+    function playVideo(vid) {
+      if (vid.idYoutube) {
+        videoFrameEl.src = `https://www.youtube.com/embed/${vid.idYoutube}?autoplay=1`;
+      } else if (vid.idDrive) {
+        videoFrameEl.src = `https://drive.google.com/file/d/${vid.idDrive}/preview`;
+      }
     }
 
     function checkHashRoute() {
